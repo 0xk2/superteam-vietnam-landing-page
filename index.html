@@ -14,13 +14,270 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/assets/logos/favicon.ico" />
 
-    <!-- Preload critical resources -->
+    <!-- DNS prefetch for external domains -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//platform.twitter.com" />
+    <link rel="dns-prefetch" href="//youtube.com" />
+    <link rel="dns-prefetch" href="//lu.ma" />
+
+    <!-- Preconnect to critical external origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Critical CSS inlined for above-the-fold content -->
+    <style>
+      /* Critical CSS for above-the-fold content */
+      :root {
+        --color-white: #ffffff;
+        --color-primary: #751e19;
+        --color-dark-overlay: rgba(42, 42, 42, 0.8);
+        --spacing-sm: 1rem;
+        --spacing-md: 2rem;
+        --border-radius-lg: 20px;
+        --transition-standard: 0.3s ease;
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        background-color: #0d0406;
+        color: var(--color-white);
+        line-height: 1.6;
+        overflow-x: hidden;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: var(--spacing-sm) var(--spacing-md);
+        backdrop-filter: blur(10px);
+        background: rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .logo-image {
+        height: 40px;
+        width: auto;
+        max-width: 200px;
+      }
+      .nav-buttons {
+        display: flex;
+        gap: var(--spacing-sm);
+      }
+      .mobile-menu-button {
+        display: none;
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: var(--spacing-md);
+      }
+
+      .hero-content {
+        max-width: 800px;
+        z-index: 2;
+        position: relative;
+      }
+      .hero-title {
+        font-size: clamp(2rem, 5vw, 4rem);
+        font-weight: 700;
+        margin-bottom: var(--spacing-sm);
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+
+      .btn {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: var(--border-radius-lg);
+        cursor: pointer;
+        font-weight: 500;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all var(--transition-standard);
+        font-size: 0.9rem;
+        min-height: 44px;
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 1px solid var(--color-white);
+        color: var(--color-white);
+      }
+
+      .btn-primary {
+        background: var(--color-white);
+        color: var(--color-primary);
+      }
+
+      @media (max-width: 768px) {
+        .nav-buttons {
+          display: none;
+        }
+        .mobile-menu-button {
+          display: flex;
+        }
+      }
+
+      /* Critical loading styles for immediate display */
+      .tweet-loading,
+      .calendar-loading {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: center;
+        width: 100%;
+        min-height: 300px;
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(255, 255, 255, 0.1);
+        border-top: 3px solid #ff6b35;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 1rem;
+        box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .tweet-loading p,
+      .calendar-loading p {
+        animation: pulse 2s ease-in-out infinite;
+        font-size: 0.9rem;
+        opacity: 0.8;
+        color: white;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      .loading-dots {
+        display: inline-block;
+        width: 20px;
+        text-align: left;
+      }
+
+      .loading-dots::after {
+        content: "...";
+        animation: loadingDots 1.5s infinite;
+        display: inline-block;
+      }
+
+      @keyframes loadingDots {
+        0% {
+          opacity: 0;
+        }
+        25% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        75% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* Shimmer effect */
+      .tweet-loading::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+    </style>
+
+    <!-- Preload critical resources with high priority -->
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap"
       as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
-    <link rel="preload" href="/assets/Background.svg" as="image" />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap"
+      />
+    </noscript>
+
+    <!-- Preload hero background image -->
+    <link
+      rel="preload"
+      href="/assets/Background.svg"
+      as="image"
+      fetchpriority="high"
+    />
 
     <!-- Open Graph Meta Tags for Social Sharing -->
     <meta
@@ -51,8 +308,14 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://superteam.vn" />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles.css" />
+    <!-- Main CSS loaded asynchronously -->
+    <link
+      rel="preload"
+      href="styles.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript><link rel="stylesheet" href="styles.css" /></noscript>
   </head>
   <body>
     <!-- Skip Link for Screen Readers -->
@@ -67,6 +330,7 @@
           class="logo-image"
           width="200"
           height="40"
+          fetchpriority="high"
         />
       </div>
 
@@ -133,49 +397,46 @@
         </p>
 
         <div class="social-grid" role="region" aria-label="Social media posts">
-          <div class="social-post">
-            <blockquote class="twitter-tweet" data-theme="dark">
-              <p lang="en" dir="ltr">
-                Day 2 recap: craft your story with Superteam Vietnam
-                <a href="https://t.co/kw13qqUOFO">pic.twitter.com/kw13qqUOFO</a>
+          <div
+            class="social-post"
+            data-tweet-url="https://twitter.com/SuperteamVN/status/1927540618026164526"
+          >
+            <div class="tweet-loading">
+              <div class="loading-spinner"></div>
+              <p>
+                Day 2 recap: craft your story with Superteam Vietnam<span
+                  class="loading-dots"
+                ></span>
               </p>
-              &mdash; Superteam Vietnam (@SuperteamVN)
-              <a
-                href="https://twitter.com/SuperteamVN/status/1927540618026164526?ref_src=twsrc%5Etfw"
-              >
-                May 28, 2025
-              </a>
-            </blockquote>
+            </div>
           </div>
 
-          <div class="social-post">
-            <blockquote class="twitter-tweet" data-theme="dark">
-              <p lang="en" dir="ltr">
-                Building the future of Web3 in Vietnam 🇻🇳 Join us for our next
-                workshop!
+          <div
+            class="social-post"
+            data-tweet-url="https://twitter.com/SuperteamVN/status/1927540618026164526"
+          >
+            <div class="tweet-loading">
+              <div class="loading-spinner"></div>
+              <p>
+                Building the future of Web3 in Vietnam 🇻🇳<span
+                  class="loading-dots"
+                ></span>
               </p>
-              &mdash; Superteam Vietnam (@SuperteamVN)
-              <a
-                href="https://twitter.com/SuperteamVN/status/1927540618026164526?ref_src=twsrc%5Etfw"
-              >
-                May 25, 2025
-              </a>
-            </blockquote>
+            </div>
           </div>
 
-          <div class="social-post">
-            <blockquote class="twitter-tweet" data-theme="dark">
-              <p lang="en" dir="ltr">
-                Amazing turnout at our latest meetup! The Solana community in
-                Vietnam is growing strong 🚀
+          <div
+            class="social-post"
+            data-tweet-url="https://twitter.com/SuperteamVN/status/1927540618026164526"
+          >
+            <div class="tweet-loading">
+              <div class="loading-spinner"></div>
+              <p>
+                Amazing turnout at our latest meetup! 🚀<span
+                  class="loading-dots"
+                ></span>
               </p>
-              &mdash; Superteam Vietnam (@SuperteamVN)
-              <a
-                href="https://twitter.com/SuperteamVN/status/1927540618026164526?ref_src=twsrc%5Etfw"
-              >
-                May 20, 2025
-              </a>
-            </blockquote>
+            </div>
           </div>
         </div>
       </section>
@@ -184,18 +445,28 @@
       <section class="video-section" aria-labelledby="video-title">
         <h2 id="video-title" class="section-title sr-only">Featured Video</h2>
         <div class="video-container">
-          <div class="video-placeholder">
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/S9CXtNUnbtc?si=CXFaOofjtfFF_peO"
-              title="Superteam Vietnam Introduction Video"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-              loading="lazy"
-            ></iframe>
+          <div class="video-placeholder" data-video-id="S9CXtNUnbtc">
+            <div class="video-thumbnail">
+              <img
+                src="https://img.youtube.com/vi/S9CXtNUnbtc/maxresdefault.jpg"
+                alt="Superteam Vietnam Introduction Video Thumbnail"
+                loading="lazy"
+                width="560"
+                height="315"
+              />
+              <button
+                class="play-button"
+                onclick="loadVideo(this.parentElement.parentElement)"
+              >
+                <svg width="68" height="48" viewBox="0 0 68 48">
+                  <path
+                    d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"
+                    fill="#f00"
+                  ></path>
+                  <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -218,17 +489,15 @@
             </p>
           </div>
           <div class="initiatives-iframe-container">
-            <iframe
-              src="https://lu.ma/embed/calendar/cal-9edNfCvrI4ZfYfA/events"
-              width="600"
-              height="450"
-              frameborder="0"
-              style="border: 1px solid #bfcbda88; border-radius: 4px"
-              allowfullscreen=""
-              aria-label="Upcoming events calendar"
-              title="Superteam Vietnam Events Calendar"
-              loading="lazy"
-            ></iframe>
+            <div
+              class="calendar-container"
+              data-calendar-src="https://lu.ma/embed/calendar/cal-9edNfCvrI4ZfYfA/events"
+            >
+              <div class="calendar-loading">
+                <div class="loading-spinner"></div>
+                <p>Loading events calendar<span class="loading-dots"></span></p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -255,6 +524,7 @@
               loading="lazy"
               width="300"
               height="225"
+              decoding="async"
             />
           </div>
           <div
@@ -270,6 +540,7 @@
               loading="lazy"
               width="300"
               height="225"
+              decoding="async"
             />
           </div>
           <div
@@ -285,6 +556,7 @@
               loading="lazy"
               width="300"
               height="225"
+              decoding="async"
             />
           </div>
           <div
@@ -300,6 +572,7 @@
               loading="lazy"
               width="300"
               height="225"
+              decoding="async"
             />
           </div>
           <div
@@ -315,6 +588,7 @@
               loading="lazy"
               width="300"
               height="225"
+              decoding="async"
             />
           </div>
           <div
@@ -330,6 +604,7 @@
               loading="lazy"
               width="300"
               height="225"
+              decoding="async"
             />
           </div>
         </div>
@@ -346,6 +621,7 @@
             class="logo-image"
             width="200"
             height="40"
+            loading="lazy"
           />
         </div>
       </div>
@@ -362,44 +638,57 @@
           rel="noopener noreferrer"
           aria-label="Follow us on X (Twitter)"
         >
-          <img src="assets/social/x.svg" alt="" role="presentation" />
+          <img
+            src="assets/social/x.svg"
+            alt=""
+            role="presentation"
+            loading="lazy"
+          />
         </a>
         <a
           href="https://www.youtube.com/@superteamvietnam"
           class="social-link"
           aria-label="Subscribe to our YouTube channel"
         >
-          <img src="assets/social/tube.svg" alt="" role="presentation" />
+          <img
+            src="assets/social/tube.svg"
+            alt=""
+            role="presentation"
+            loading="lazy"
+          />
         </a>
         <a
           href="https://earn.superteam.fun/"
           class="social-link"
           aria-label="View our bounty programs"
         >
-          <img src="assets/social/bounty.svg" alt="" role="presentation" />
+          <img
+            src="assets/social/bounty.svg"
+            alt=""
+            role="presentation"
+            loading="lazy"
+          />
         </a>
         <a
           href="https://superteamdao.notion.site/Solana-Foundation-Vietnam-Grants-381c9af784ea48bda6ea83b6e6e0fffb"
           class="social-link"
           aria-label="Check our Notion workspace"
         >
-          <img src="assets/social/notion.svg" alt="" role="presentation" />
+          <img
+            src="assets/social/notion.svg"
+            alt=""
+            role="presentation"
+            loading="lazy"
+          />
         </a>
       </nav>
 
       <p class="footer-text">© 2024 Superteam Vietnam. All rights reserved.</p>
     </footer>
 
-    <!-- Load Twitter widget script once at the end -->
-    <script
-      async
-      src="https://platform.twitter.com/widgets.js"
-      charset="utf-8"
-    ></script>
-
-    <!-- Performance and accessibility enhancements -->
+    <!-- Optimized JavaScript loaded at the end -->
     <script>
-      // Mobile menu functionality
+      // Optimized mobile menu functionality
       document.addEventListener("DOMContentLoaded", function () {
         const mobileMenuButton = document.querySelector(".mobile-menu-button");
         const mobileNav = document.querySelector(".mobile-nav");
@@ -407,16 +696,9 @@
         if (mobileMenuButton && mobileNav) {
           mobileMenuButton.addEventListener("click", function () {
             const isActive = mobileNav.classList.contains("active");
-
-            if (isActive) {
-              mobileNav.classList.remove("active");
-              mobileMenuButton.classList.remove("active");
-              mobileMenuButton.setAttribute("aria-expanded", "false");
-            } else {
-              mobileNav.classList.add("active");
-              mobileMenuButton.classList.add("active");
-              mobileMenuButton.setAttribute("aria-expanded", "true");
-            }
+            mobileNav.classList.toggle("active", !isActive);
+            mobileMenuButton.classList.toggle("active", !isActive);
+            mobileMenuButton.setAttribute("aria-expanded", !isActive);
           });
 
           // Close mobile menu when clicking on a link
@@ -441,28 +723,6 @@
           });
         }
 
-        // Add loading animation when buttons are clicked
-        document.querySelectorAll(".btn").forEach((btn) => {
-          btn.addEventListener("click", function () {
-            if (this.href && !this.href.startsWith("#")) {
-              this.classList.add("loading");
-            }
-          });
-        });
-
-        // Improve image loading experience
-        document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
-          img.addEventListener("load", function () {
-            this.style.opacity = "1";
-          });
-
-          // Handle image load errors
-          img.addEventListener("error", function () {
-            this.style.opacity = "0.5";
-            console.warn("Failed to load image:", this.src);
-          });
-        });
-
         // Add keyboard navigation for photo grid
         document.querySelectorAll(".photo-item").forEach((item) => {
           item.addEventListener("keydown", function (e) {
@@ -480,17 +740,193 @@
             e.preventDefault();
             const target = document.querySelector(this.getAttribute("href"));
             if (target) {
-              target.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              });
+              target.scrollIntoView({ behavior: "smooth", block: "start" });
               target.focus();
             }
           });
         });
+
+        // Intersection Observer for automatic lazy loading
+        const observerOptions = {
+          rootMargin: "100px 0px",
+          threshold: 0.1,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              if (
+                entry.target.classList.contains("social-post") &&
+                entry.target.hasAttribute("data-tweet-url")
+              ) {
+                // Ensure loading state is visible
+                entry.target.classList.add("loading");
+                loadTweet(entry.target);
+                observer.unobserve(entry.target);
+              } else if (
+                entry.target.classList.contains("calendar-container")
+              ) {
+                entry.target.classList.add("loading");
+                loadCalendar(entry.target);
+                observer.unobserve(entry.target);
+              }
+            }
+          });
+        }, observerOptions);
+
+        // Observe elements for lazy loading
+        document
+          .querySelectorAll(".social-post[data-tweet-url]")
+          .forEach((el) => {
+            observer.observe(el);
+            console.log("Observing tweet container:", el); // Debug log
+          });
+        document
+          .querySelectorAll(".calendar-container")
+          .forEach((el) => observer.observe(el));
       });
 
-      // Service Worker for better caching (optional)
+      // Lazy load Twitter script
+      let twitterScriptLoaded = false;
+      function loadTwitterScript() {
+        if (!twitterScriptLoaded) {
+          const script = document.createElement("script");
+          script.src = "https://platform.twitter.com/widgets.js";
+          script.async = true;
+          script.charset = "utf-8";
+          document.head.appendChild(script);
+          twitterScriptLoaded = true;
+        }
+      }
+
+      // Auto-load tweets when they come into view
+      function loadTweet(container) {
+        console.log("Loading tweet for container:", container); // Debug log
+
+        // Add loading state
+        container.classList.add("loading");
+
+        const tweetUrl = container.getAttribute("data-tweet-url");
+        console.log("Tweet URL:", tweetUrl); // Debug log
+
+        // Make sure loading UI is visible
+        const loadingDiv = container.querySelector(".tweet-loading");
+        if (loadingDiv) {
+          loadingDiv.style.display = "flex";
+          loadingDiv.style.opacity = "1";
+          console.log("Loading UI should be visible now"); // Debug log
+        }
+
+        // Show loading for minimum 2 seconds for better UX
+        setTimeout(() => {
+          console.log("Starting Twitter widget load"); // Debug log
+          container.innerHTML = `
+            <blockquote class="twitter-tweet" data-theme="dark" style="opacity: 0; position: absolute; pointer-events: none;">
+              <a href="${tweetUrl}"></a>
+            </blockquote>
+          `;
+
+          loadTwitterScript();
+
+          // Handle tweet load completion
+          let attempts = 0;
+          const maxAttempts = 50; // 5 seconds max
+
+          const checkTwitterLoad = setInterval(() => {
+            attempts++;
+
+            if (window.twttr && window.twttr.widgets) {
+              window.twttr.widgets
+                .load(container)
+                .then(() => {
+                  console.log("Tweet loaded successfully"); // Debug log
+                  // Make tweet visible and remove loading
+                  const tweetBlockquote =
+                    container.querySelector(".twitter-tweet");
+                  if (tweetBlockquote) {
+                    tweetBlockquote.style.opacity = "1";
+                    tweetBlockquote.style.position = "static";
+                    tweetBlockquote.style.pointerEvents = "auto";
+                  }
+                  container.classList.remove("loading");
+                  container.classList.add("loaded");
+                  clearInterval(checkTwitterLoad);
+                })
+                .catch((error) => {
+                  console.log("Tweet loading failed:", error); // Debug log
+                  // If loading fails, show a nice error
+                  if (attempts >= maxAttempts) {
+                    container.innerHTML = `
+                    <div class="tweet-error">
+                      <p>Unable to load tweet</p>
+                      <a href="${tweetUrl}" target="_blank" rel="noopener">View on Twitter</a>
+                    </div>
+                  `;
+                    container.classList.remove("loading");
+                    container.classList.add("error");
+                    clearInterval(checkTwitterLoad);
+                  }
+                });
+            } else if (attempts >= maxAttempts) {
+              console.log("Twitter script timeout"); // Debug log
+              // Timeout fallback
+              container.innerHTML = `
+                <div class="tweet-error">
+                  <p>Unable to load tweet</p>
+                  <a href="${tweetUrl}" target="_blank" rel="noopener">View on Twitter</a>
+                </div>
+              `;
+              container.classList.remove("loading");
+              container.classList.add("error");
+              clearInterval(checkTwitterLoad);
+            }
+          }, 100);
+        }, 2000); // Show loading for minimum 2 seconds
+      }
+
+      // Load YouTube video on click
+      function loadVideo(container) {
+        const videoId = container.getAttribute("data-video-id");
+        container.innerHTML = `
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/${videoId}?si=CXFaOofjtfFF_peO&autoplay=1"
+            title="Superteam Vietnam Introduction Video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        `;
+      }
+
+      // Auto-load calendar when it comes into view
+      function loadCalendar(container) {
+        // Add loading state
+        container.classList.add("loading");
+
+        const calendarSrc = container.getAttribute("data-calendar-src");
+
+        // Add a small delay for better UX perception
+        setTimeout(() => {
+          container.innerHTML = `
+            <iframe
+              src="${calendarSrc}"
+              width="600"
+              height="450"
+              frameborder="0"
+              style="border: 1px solid #bfcbda88; border-radius: 4px; opacity: 0; transition: opacity 0.5s ease;"
+              allowfullscreen=""
+              aria-label="Upcoming events calendar"
+              title="Superteam Vietnam Events Calendar"
+              onload="this.style.opacity='1'; this.parentElement.classList.remove('loading'); this.parentElement.classList.add('loaded');"
+            ></iframe>
+          `;
+        }, 400); // 400ms delay for calendar
+      }
+
+      // Service Worker for caching (optional)
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", function () {
           navigator.serviceWorker.register("/sw.js").catch(function () {
