@@ -48,7 +48,7 @@
       body {
         font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
           "Segoe UI", Roboto, sans-serif;
-        background-color: #0d0406;
+        background-color: #201309;
         color: var(--color-white);
         line-height: 1.6;
         overflow-x: hidden;
@@ -146,7 +146,8 @@
 
       /* Critical loading styles for immediate display */
       .tweet-loading,
-      .calendar-loading {
+      .calendar-loading,
+      .video-loading {
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 12px;
@@ -183,7 +184,8 @@
       }
 
       .tweet-loading p,
-      .calendar-loading p {
+      .calendar-loading p,
+      .video-loading p {
         animation: pulse 2s ease-in-out infinite;
         font-size: 0.9rem;
         opacity: 0.8;
@@ -231,7 +233,8 @@
       }
 
       /* Shimmer effect */
-      .tweet-loading::before {
+      .tweet-loading::before,
+      .video-loading::before {
         content: "";
         position: absolute;
         top: 0;
@@ -399,12 +402,22 @@
         <div class="social-grid" role="region" aria-label="Social media posts">
           <div
             class="social-post"
-            data-tweet-url="https://twitter.com/SuperteamVN/status/1929466095091831028"
+            data-tweet-url="https://twitter.com/SuperteamVN/status/1931342091655000454"
+          >
+            <div class="tweet-loading">
+              <div class="loading-spinner"></div>
+              <p>We're a team. Superteam<span class="loading-dots"></span></p>
+            </div>
+          </div>
+
+          <div
+            class="social-post"
+            data-tweet-url="https://twitter.com/SuperteamVN/status/1929945000177217877"
           >
             <div class="tweet-loading">
               <div class="loading-spinner"></div>
               <p>
-                Da Nang city 🇻🇳 welcome @SolanaSummitOrg<span
+                Bullish on everyone who works hard and smart<span
                   class="loading-dots"
                 ></span>
               </p>
@@ -413,26 +426,12 @@
 
           <div
             class="social-post"
-            data-tweet-url="https://twitter.com/SuperteamVN/status/1928710254193422701"
+            data-tweet-url="https://twitter.com/SuperteamVN/status/1928644440060481549"
           >
             <div class="tweet-loading">
               <div class="loading-spinner"></div>
               <p>
-                Meet the legendary aussie - Metasal_ 🇦🇺<span
-                  class="loading-dots"
-                ></span>
-              </p>
-            </div>
-          </div>
-
-          <div
-            class="social-post"
-            data-tweet-url="https://twitter.com/SuperteamVN/status/1928524030455521447"
-          >
-            <div class="tweet-loading">
-              <div class="loading-spinner"></div>
-              <p>
-                Money management cheat codes for founders 💸<span
+                It is day 5 in our Startup Camp<span
                   class="loading-dots"
                 ></span>
               </p>
@@ -446,26 +445,9 @@
         <h2 id="video-title" class="section-title sr-only">Featured Video</h2>
         <div class="video-container">
           <div class="video-placeholder" data-video-id="Gy6bMN1kNUk">
-            <div class="video-thumbnail">
-              <img
-                src="https://img.youtube.com/vi/Gy6bMN1kNUk/maxresdefault.jpg"
-                alt="Superteam Vietnam Introduction Video Thumbnail"
-                loading="lazy"
-                width="560"
-                height="315"
-              />
-              <button
-                class="play-button"
-                onclick="loadVideo(this.parentElement.parentElement)"
-              >
-                <svg width="68" height="48" viewBox="0 0 68 48">
-                  <path
-                    d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"
-                    fill="#f00"
-                  ></path>
-                  <path d="M 45,24 27,14 27,34" fill="#fff"></path>
-                </svg>
-              </button>
+            <div class="video-loading">
+              <div class="loading-spinner"></div>
+              <p>Loading video<span class="loading-dots"></span></p>
             </div>
           </div>
         </div>
@@ -769,6 +751,10 @@
                 entry.target.classList.add("loading");
                 loadCalendar(entry.target);
                 observer.unobserve(entry.target);
+              } else if (entry.target.classList.contains("video-placeholder")) {
+                entry.target.classList.add("loading");
+                autoLoadVideo(entry.target);
+                observer.unobserve(entry.target);
               }
             }
           });
@@ -783,6 +769,9 @@
           });
         document
           .querySelectorAll(".calendar-container")
+          .forEach((el) => observer.observe(el));
+        document
+          .querySelectorAll(".video-placeholder")
           .forEach((el) => observer.observe(el));
       });
 
@@ -884,14 +873,40 @@
         }, 2000); // Show loading for minimum 2 seconds
       }
 
-      // Load YouTube video on click
+      // Auto-load YouTube video when it comes into view
+      function autoLoadVideo(container) {
+        const videoId = container.getAttribute("data-video-id");
+
+        // Add a small delay for better UX
+        setTimeout(() => {
+          container.innerHTML = `
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&si=CXFaOofjtfFF_peO"
+              title="Superteam Vietnam Introduction Video"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+              style="opacity: 0; transition: opacity 0.5s ease;"
+              onload="this.style.opacity='1'; this.parentElement.classList.remove('loading'); this.parentElement.classList.add('loaded');"
+            ></iframe>
+            <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 5px; font-size: 12px; cursor: pointer;" onclick="this.previousElementSibling.contentWindow.postMessage('{\"event\":\"command\",\"func\":\"unMute\",\"args\":\"\"}', '*'); this.style.display='none';">
+              🔊 Click to unmute
+            </div>
+          `;
+        }, 800);
+      }
+
+      // Load YouTube video on click with autoplay (keeping for compatibility)
       function loadVideo(container) {
         const videoId = container.getAttribute("data-video-id");
         container.innerHTML = `
           <iframe
             width="560"
             height="315"
-            src="https://www.youtube.com/embed/${videoId}?si=CXFaOofjtfFF_peO&autoplay=1"
+            src="https://www.youtube.com/embed/${videoId}?autoplay=1&si=CXFaOofjtfFF_peO"
             title="Superteam Vietnam Introduction Video"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
