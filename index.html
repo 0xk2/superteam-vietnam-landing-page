@@ -30,7 +30,11 @@
       :root {
         --color-white: #ffffff;
         --color-primary: #751e19;
+        --color-accent: #ff6b35;
+        --color-accent-secondary: #f7931e;
         --color-dark-overlay: rgba(42, 42, 42, 0.8);
+        --color-border: rgba(255, 255, 255, 0.1);
+        --color-glass: rgba(255, 255, 255, 0.05);
         --spacing-sm: 1rem;
         --spacing-md: 2rem;
         --border-radius-lg: 20px;
@@ -484,6 +488,90 @@
         </div>
       </section>
 
+      <!-- Enhanced Merch Section -->
+      <section class="merch-section" aria-labelledby="merch-title">
+        <div class="merch-container">
+          <p class="merch-subtitle">
+            Earned, not sold. Worn by those who build the future.
+          </p>
+          <h2 id="merch-title" class="section-title">OUR MERCH</h2>
+          <p class="merch-description">
+            Not airdropped. Not mintable. You don't find this in stores. You
+            earn it through dedication, innovation, and contributing to the
+            Solana ecosystem in Vietnam.
+          </p>
+
+          <div
+            class="merch-grid"
+            role="region"
+            aria-label="Merchandise collection"
+          >
+            <div
+              class="merch-item"
+              tabindex="0"
+              role="img"
+              aria-label="Superteam Vietnam T-shirt design 1"
+            >
+              <div class="earned-badge">Earned</div>
+              <div class="merch-image-container">
+                <img
+                  src="/assets/photos/merch-1.png"
+                  alt="Superteam Vietnam T-shirt design 1 - Front and back view"
+                  class="merch-image"
+                  loading="lazy"
+                  width="800"
+                  height="800"
+                  decoding="async"
+                />
+              </div>
+              <div class="merch-label">Builder Tee</div>
+            </div>
+
+            <div
+              class="merch-item"
+              tabindex="0"
+              role="img"
+              aria-label="Superteam Vietnam T-shirt design 2"
+            >
+              <div class="earned-badge">Earned</div>
+              <div class="merch-image-container">
+                <img
+                  src="/assets/photos/merch-2.png"
+                  alt="Superteam Vietnam T-shirt design 2 - Front and back view"
+                  class="merch-image"
+                  loading="lazy"
+                  width="800"
+                  height="600"
+                  decoding="async"
+                />
+              </div>
+              <div class="merch-label">Founders Hoodie</div>
+            </div>
+
+            <div
+              class="merch-item"
+              tabindex="0"
+              role="img"
+              aria-label="Superteam Vietnam tote bag"
+            >
+              <div class="earned-badge">Earned</div>
+              <div class="merch-image-container">
+                <img
+                  src="/assets/photos/merch-3.png"
+                  alt="Tote Bag - Premium Quality"
+                  class="merch-image"
+                  loading="lazy"
+                  width="800"
+                  height="600"
+                  decoding="async"
+                />
+              </div>
+              <div class="merch-label">Developer Tote</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Join the Movement -->
       <section class="movement-section" aria-labelledby="movement-title">
         <h2 id="movement-title" class="section-title">JOIN THE MOVEMENT</h2>
@@ -714,6 +802,62 @@
               setTimeout(() => this.classList.remove("photo-clicked"), 200);
             }
           });
+        });
+
+        // Enhanced keyboard navigation for merch items
+        document.querySelectorAll(".merch-item").forEach((item, index) => {
+          item.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              this.classList.add("merch-clicked");
+              setTimeout(() => this.classList.remove("merch-clicked"), 200);
+
+              // Add subtle feedback effect for the earned badge
+              const badge = this.querySelector(".earned-badge");
+              if (badge) {
+                badge.style.animation = "none";
+                setTimeout(() => {
+                  badge.style.animation = "pulse 3s ease-in-out infinite";
+                }, 100);
+              }
+            }
+          });
+
+          // Enhanced focus management
+          item.addEventListener("focus", function () {
+            this.style.outline = "3px solid var(--color-accent)";
+            this.style.outlineOffset = "3px";
+          });
+
+          item.addEventListener("blur", function () {
+            this.style.outline = "none";
+          });
+
+          // Scroll-triggered animations for merch items
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.style.opacity = "1";
+                  entry.target.style.transform = "translateY(0)";
+                }
+              });
+            },
+            {
+              threshold: 0.1,
+              rootMargin: "50px",
+            }
+          );
+
+          // Set initial state for animation
+          item.style.opacity = "0";
+          item.style.transform = "translateY(50px)";
+          item.style.transition = `opacity 0.6s ease ${
+            index * 0.2
+          }s, transform 0.6s ease ${index * 0.2}s`;
+
+          // Start observing
+          observer.observe(item);
         });
 
         // Smooth scrolling for anchor links
