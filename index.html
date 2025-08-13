@@ -3,9 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Superteam Vietnam - Fueling the Next Generation of Solana Builders
-    </title>
+    <title>Superteam Vietnam - The Talent layer of Solana in Vietnam</title>
     <meta
       name="description"
       content="Join a growing Web3 builder community in Vietnam. Build, fund, and launch new products on Solana with Superteam Vietnam."
@@ -50,8 +48,8 @@
       }
 
       body {
-        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", Roboto, sans-serif;
+        font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont,
+          'Segoe UI', Roboto, sans-serif;
         background-color: #301609;
         color: var(--color-white);
         line-height: 1.6;
@@ -59,6 +57,7 @@
         min-height: 100vh;
         margin: 0;
         padding: 0;
+        /* background-color: #0d0406; */
         font-synthesis: none;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
@@ -89,28 +88,6 @@
       }
       .mobile-menu-button {
         display: none;
-      }
-
-      .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: var(--spacing-md);
-      }
-
-      .hero-content {
-        max-width: 800px;
-        z-index: 2;
-        position: relative;
-      }
-      .hero-title {
-        font-size: clamp(2rem, 5vw, 4rem);
-        font-weight: 700;
-        margin-bottom: var(--spacing-sm);
-        line-height: 1.2;
-        letter-spacing: -0.02em;
       }
 
       .btn {
@@ -213,7 +190,7 @@
       }
 
       .loading-dots::after {
-        content: "...";
+        content: '...';
         animation: loadingDots 1.5s infinite;
         display: inline-block;
       }
@@ -239,7 +216,7 @@
       /* Shimmer effect */
       .tweet-loading::before,
       .video-loading::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 0;
         left: -100%;
@@ -278,14 +255,6 @@
       />
     </noscript>
 
-    <!-- Preload hero background image -->
-    <link
-      rel="preload"
-      href="/assets/Background.svg"
-      as="image"
-      fetchpriority="high"
-    />
-
     <!-- Open Graph Meta Tags for Social Sharing -->
     <meta
       property="og:title"
@@ -322,6 +291,10 @@
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
     />
+    <link rel="stylesheet" href="css/section-bg.css" as="style" />
+    <link rel="stylesheet" href="css/hero.css" as="style" />
+    <link rel="stylesheet" href="css/social.css" as="style" />
+    <link rel="stylesheet" href="css/video.css" as="style" />
     <noscript><link rel="stylesheet" href="styles.css" /></noscript>
   </head>
   <body>
@@ -386,75 +359,41 @@
       <section class="hero" role="banner">
         <div class="hero-content">
           <p class="hero-subtitle">
-            Join a growing Web3 builder community. Build, fund, and launch new
-            products.
+            We help Developers to code in Solana, Founders to build startups and Creators to produce video & content.
           </p>
           <h1 class="hero-title">
-            FUELING THE NEXT GENERATION OF<br />SOLANA BUILDERS IN VIETNAM
+            Superteam Vietnam is the talent layer of Solana
           </h1>
         </div>
       </section>
 
       <!-- Social Content Grid -->
       <section class="social-section" aria-labelledby="social-title">
-        <h2 id="social-title" class="section-title">SOCIAL CONTENT GRID</h2>
+        <h2 id="social-title" class="section-title">
+          Follow <a href="https://x.com/superteamvn">@SuperteamVN</a>
+        </h2>
         <p class="section-subtitle">
-          Stay connected with our community through social media. Follow our
-          journey as we build the future of Web3 in Vietnam.
+          Our social media cover latest events, policy advocacy. We are the voice of @Solana talents in Vietnam.
         </p>
-
+        
         <div class="social-grid" role="region" aria-label="Social media posts">
-          <div
-            class="social-post"
-            data-tweet-url="https://twitter.com/SuperteamVN/status/1931342091655000454"
-          >
-            <div class="tweet-loading">
-              <div class="loading-spinner"></div>
-              <p>We're a team. Superteam<span class="loading-dots"></span></p>
-            </div>
-          </div>
-
-          <div
-            class="social-post"
-            data-tweet-url="https://twitter.com/SuperteamVN/status/1929945000177217877"
-          >
-            <div class="tweet-loading">
-              <div class="loading-spinner"></div>
-              <p>
-                Bullish on everyone who works hard and smart<span
-                  class="loading-dots"
-                ></span>
-              </p>
-            </div>
-          </div>
-
-          <div
-            class="social-post"
-            data-tweet-url="https://twitter.com/SuperteamVN/status/1928644440060481549"
-          >
-            <div class="tweet-loading">
-              <div class="loading-spinner"></div>
-              <p>
-                It is day 5 in our Startup Camp<span
-                  class="loading-dots"
-                ></span>
-              </p>
-            </div>
-          </div>
+          <iframe src="https://www.juicer.io/api/feeds/superteamvn/iframe" scrolling="no" 
+            frameborder="0" width="100%" height="1000" 
+            style="display:block;margin:0 auto;overflow:hidden"></iframe>
         </div>
       </section>
 
       <!-- Video Section -->
       <section class="video-section" aria-labelledby="video-title">
         <h2 id="video-title" class="section-title sr-only">Featured Video</h2>
-        <div class="video-container">
-          <div class="video-placeholder" data-video-id="Gy6bMN1kNUk">
-            <div class="video-loading">
-              <div class="loading-spinner"></div>
-              <p>Loading video<span class="loading-dots"></span></p>
+          <div class="video-container">
+            <div class="video-placeholder" data-video-id="Gy6bMN1kNUk">
+              <div class="video-loading">
+                <div class="loading-spinner"></div>
+                <p>Loading video<span class="loading-dots"></span></p>
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
       <!-- Featured Initiatives -->
@@ -571,7 +510,10 @@
           </div>
         </div>
       </section>
+    </main>
 
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
       <!-- Join the Movement -->
       <section class="movement-section" aria-labelledby="movement-title">
         <h2 id="movement-title" class="section-title">JOIN THE MOVEMENT</h2>
@@ -679,10 +621,6 @@
           </div>
         </div>
       </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer" role="contentinfo">
       <div class="footer-logo">
         <div class="logo">
           <img
@@ -759,78 +697,78 @@
     <!-- Optimized JavaScript loaded at the end -->
     <script>
       // Optimized mobile menu functionality
-      document.addEventListener("DOMContentLoaded", function () {
-        const mobileMenuButton = document.querySelector(".mobile-menu-button");
-        const mobileNav = document.querySelector(".mobile-nav");
+      document.addEventListener('DOMContentLoaded', function () {
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileNav = document.querySelector('.mobile-nav');
 
         if (mobileMenuButton && mobileNav) {
-          mobileMenuButton.addEventListener("click", function () {
-            const isActive = mobileNav.classList.contains("active");
-            mobileNav.classList.toggle("active", !isActive);
-            mobileMenuButton.classList.toggle("active", !isActive);
-            mobileMenuButton.setAttribute("aria-expanded", !isActive);
+          mobileMenuButton.addEventListener('click', function () {
+            const isActive = mobileNav.classList.contains('active');
+            mobileNav.classList.toggle('active', !isActive);
+            mobileMenuButton.classList.toggle('active', !isActive);
+            mobileMenuButton.setAttribute('aria-expanded', !isActive);
           });
 
           // Close mobile menu when clicking on a link
-          document.querySelectorAll(".mobile-nav a").forEach((link) => {
-            link.addEventListener("click", function () {
-              mobileNav.classList.remove("active");
-              mobileMenuButton.classList.remove("active");
-              mobileMenuButton.setAttribute("aria-expanded", "false");
+          document.querySelectorAll('.mobile-nav a').forEach((link) => {
+            link.addEventListener('click', function () {
+              mobileNav.classList.remove('active');
+              mobileMenuButton.classList.remove('active');
+              mobileMenuButton.setAttribute('aria-expanded', 'false');
             });
           });
 
           // Close mobile menu when clicking outside
-          document.addEventListener("click", function (e) {
+          document.addEventListener('click', function (e) {
             if (
               !mobileMenuButton.contains(e.target) &&
               !mobileNav.contains(e.target)
             ) {
-              mobileNav.classList.remove("active");
-              mobileMenuButton.classList.remove("active");
-              mobileMenuButton.setAttribute("aria-expanded", "false");
+              mobileNav.classList.remove('active');
+              mobileMenuButton.classList.remove('active');
+              mobileMenuButton.setAttribute('aria-expanded', 'false');
             }
           });
         }
 
         // Add keyboard navigation for photo grid
-        document.querySelectorAll(".photo-item").forEach((item) => {
-          item.addEventListener("keydown", function (e) {
-            if (e.key === "Enter" || e.key === " ") {
+        document.querySelectorAll('.photo-item').forEach((item) => {
+          item.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault();
-              this.classList.add("photo-clicked");
-              setTimeout(() => this.classList.remove("photo-clicked"), 200);
+              this.classList.add('photo-clicked');
+              setTimeout(() => this.classList.remove('photo-clicked'), 200);
             }
           });
         });
 
         // Enhanced keyboard navigation for merch items
-        document.querySelectorAll(".merch-item").forEach((item, index) => {
-          item.addEventListener("keydown", function (e) {
-            if (e.key === "Enter" || e.key === " ") {
+        document.querySelectorAll('.merch-item').forEach((item, index) => {
+          item.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault();
-              this.classList.add("merch-clicked");
-              setTimeout(() => this.classList.remove("merch-clicked"), 200);
+              this.classList.add('merch-clicked');
+              setTimeout(() => this.classList.remove('merch-clicked'), 200);
 
               // Add subtle feedback effect for the earned badge
-              const badge = this.querySelector(".earned-badge");
+              const badge = this.querySelector('.earned-badge');
               if (badge) {
-                badge.style.animation = "none";
+                badge.style.animation = 'none';
                 setTimeout(() => {
-                  badge.style.animation = "pulse 3s ease-in-out infinite";
+                  badge.style.animation = 'pulse 3s ease-in-out infinite';
                 }, 100);
               }
             }
           });
 
           // Enhanced focus management
-          item.addEventListener("focus", function () {
-            this.style.outline = "3px solid var(--color-accent)";
-            this.style.outlineOffset = "3px";
+          item.addEventListener('focus', function () {
+            this.style.outline = '3px solid var(--color-accent)';
+            this.style.outlineOffset = '3px';
           });
 
-          item.addEventListener("blur", function () {
-            this.style.outline = "none";
+          item.addEventListener('blur', function () {
+            this.style.outline = 'none';
           });
 
           // Scroll-triggered animations for merch items
@@ -838,20 +776,20 @@
             (entries) => {
               entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                  entry.target.style.opacity = "1";
-                  entry.target.style.transform = "translateY(0)";
+                  entry.target.style.opacity = '1';
+                  entry.target.style.transform = 'translateY(0)';
                 }
               });
             },
             {
               threshold: 0.1,
-              rootMargin: "50px",
+              rootMargin: '50px',
             }
           );
 
           // Set initial state for animation
-          item.style.opacity = "0";
-          item.style.transform = "translateY(50px)";
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(50px)';
           item.style.transition = `opacity 0.6s ease ${
             index * 0.2
           }s, transform 0.6s ease ${index * 0.2}s`;
@@ -862,11 +800,11 @@
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-          anchor.addEventListener("click", function (e) {
+          anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute("href"));
+            const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-              target.scrollIntoView({ behavior: "smooth", block: "start" });
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
               target.focus();
             }
           });
@@ -874,7 +812,7 @@
 
         // Intersection Observer for automatic lazy loading
         const observerOptions = {
-          rootMargin: "100px 0px",
+          rootMargin: '100px 0px',
           threshold: 0.1,
         };
 
@@ -882,21 +820,21 @@
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               if (
-                entry.target.classList.contains("social-post") &&
-                entry.target.hasAttribute("data-tweet-url")
+                entry.target.classList.contains('social-post') &&
+                entry.target.hasAttribute('data-tweet-url')
               ) {
                 // Ensure loading state is visible
-                entry.target.classList.add("loading");
+                entry.target.classList.add('loading');
                 loadTweet(entry.target);
                 observer.unobserve(entry.target);
               } else if (
-                entry.target.classList.contains("calendar-container")
+                entry.target.classList.contains('calendar-container')
               ) {
-                entry.target.classList.add("loading");
+                entry.target.classList.add('loading');
                 loadCalendar(entry.target);
                 observer.unobserve(entry.target);
-              } else if (entry.target.classList.contains("video-placeholder")) {
-                entry.target.classList.add("loading");
+              } else if (entry.target.classList.contains('video-placeholder')) {
+                entry.target.classList.add('loading');
                 autoLoadVideo(entry.target);
                 observer.unobserve(entry.target);
               }
@@ -906,16 +844,16 @@
 
         // Observe elements for lazy loading
         document
-          .querySelectorAll(".social-post[data-tweet-url]")
+          .querySelectorAll('.social-post[data-tweet-url]')
           .forEach((el) => {
             observer.observe(el);
-            console.log("Observing tweet container:", el); // Debug log
+            console.log('Observing tweet container:', el); // Debug log
           });
         document
-          .querySelectorAll(".calendar-container")
+          .querySelectorAll('.calendar-container')
           .forEach((el) => observer.observe(el));
         document
-          .querySelectorAll(".video-placeholder")
+          .querySelectorAll('.video-placeholder')
           .forEach((el) => observer.observe(el));
       });
 
@@ -923,10 +861,10 @@
       let twitterScriptLoaded = false;
       function loadTwitterScript() {
         if (!twitterScriptLoaded) {
-          const script = document.createElement("script");
-          script.src = "https://platform.twitter.com/widgets.js";
+          const script = document.createElement('script');
+          script.src = 'https://platform.twitter.com/widgets.js';
           script.async = true;
-          script.charset = "utf-8";
+          script.charset = 'utf-8';
           document.head.appendChild(script);
           twitterScriptLoaded = true;
         }
@@ -934,25 +872,25 @@
 
       // Auto-load tweets when they come into view
       function loadTweet(container) {
-        console.log("Loading tweet for container:", container); // Debug log
+        console.log('Loading tweet for container:', container); // Debug log
 
         // Add loading state
-        container.classList.add("loading");
+        container.classList.add('loading');
 
-        const tweetUrl = container.getAttribute("data-tweet-url");
-        console.log("Tweet URL:", tweetUrl); // Debug log
+        const tweetUrl = container.getAttribute('data-tweet-url');
+        console.log('Tweet URL:', tweetUrl); // Debug log
 
         // Make sure loading UI is visible
-        const loadingDiv = container.querySelector(".tweet-loading");
+        const loadingDiv = container.querySelector('.tweet-loading');
         if (loadingDiv) {
-          loadingDiv.style.display = "flex";
-          loadingDiv.style.opacity = "1";
-          console.log("Loading UI should be visible now"); // Debug log
+          loadingDiv.style.display = 'flex';
+          loadingDiv.style.opacity = '1';
+          console.log('Loading UI should be visible now'); // Debug log
         }
 
         // Show loading for minimum 2 seconds for better UX
         setTimeout(() => {
-          console.log("Starting Twitter widget load"); // Debug log
+          console.log('Starting Twitter widget load'); // Debug log
           container.innerHTML = `
             <blockquote class="twitter-tweet" data-theme="dark" style="opacity: 0; position: absolute; pointer-events: none;">
               <a href="${tweetUrl}"></a>
@@ -972,21 +910,21 @@
               window.twttr.widgets
                 .load(container)
                 .then(() => {
-                  console.log("Tweet loaded successfully"); // Debug log
+                  console.log('Tweet loaded successfully'); // Debug log
                   // Make tweet visible and remove loading
                   const tweetBlockquote =
-                    container.querySelector(".twitter-tweet");
+                    container.querySelector('.twitter-tweet');
                   if (tweetBlockquote) {
-                    tweetBlockquote.style.opacity = "1";
-                    tweetBlockquote.style.position = "static";
-                    tweetBlockquote.style.pointerEvents = "auto";
+                    tweetBlockquote.style.opacity = '1';
+                    tweetBlockquote.style.position = 'static';
+                    tweetBlockquote.style.pointerEvents = 'auto';
                   }
-                  container.classList.remove("loading");
-                  container.classList.add("loaded");
+                  container.classList.remove('loading');
+                  container.classList.add('loaded');
                   clearInterval(checkTwitterLoad);
                 })
                 .catch((error) => {
-                  console.log("Tweet loading failed:", error); // Debug log
+                  console.log('Tweet loading failed:', error); // Debug log
                   // If loading fails, show a nice error
                   if (attempts >= maxAttempts) {
                     container.innerHTML = `
@@ -995,13 +933,13 @@
                       <a href="${tweetUrl}" target="_blank" rel="noopener">View on Twitter</a>
                     </div>
                   `;
-                    container.classList.remove("loading");
-                    container.classList.add("error");
+                    container.classList.remove('loading');
+                    container.classList.add('error');
                     clearInterval(checkTwitterLoad);
                   }
                 });
             } else if (attempts >= maxAttempts) {
-              console.log("Twitter script timeout"); // Debug log
+              console.log('Twitter script timeout'); // Debug log
               // Timeout fallback
               container.innerHTML = `
                 <div class="tweet-error">
@@ -1009,8 +947,8 @@
                   <a href="${tweetUrl}" target="_blank" rel="noopener">View on Twitter</a>
                 </div>
               `;
-              container.classList.remove("loading");
-              container.classList.add("error");
+              container.classList.remove('loading');
+              container.classList.add('error');
               clearInterval(checkTwitterLoad);
             }
           }, 100);
@@ -1019,7 +957,7 @@
 
       // Auto-load YouTube video when it comes into view
       function autoLoadVideo(container) {
-        const videoId = container.getAttribute("data-video-id");
+        const videoId = container.getAttribute('data-video-id');
 
         // Add a small delay for better UX
         setTimeout(() => {
@@ -1045,7 +983,7 @@
 
       // Load YouTube video on click with autoplay (keeping for compatibility)
       function loadVideo(container) {
-        const videoId = container.getAttribute("data-video-id");
+        const videoId = container.getAttribute('data-video-id');
         container.innerHTML = `
           <iframe
             width="560"
@@ -1063,9 +1001,9 @@
       // Auto-load calendar when it comes into view
       function loadCalendar(container) {
         // Add loading state
-        container.classList.add("loading");
+        container.classList.add('loading');
 
-        const calendarSrc = container.getAttribute("data-calendar-src");
+        const calendarSrc = container.getAttribute('data-calendar-src');
 
         // Add a small delay for better UX perception
         setTimeout(() => {
@@ -1086,10 +1024,10 @@
       }
 
       // Service Worker for caching (optional)
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", function () {
-          navigator.serviceWorker.register("/sw.js").catch(function () {
-            console.log("Service Worker registration failed");
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js').catch(function () {
+            console.log('Service Worker registration failed');
           });
         });
       }

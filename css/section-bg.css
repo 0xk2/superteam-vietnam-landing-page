@@ -1,0 +1,35 @@
+section.hero {
+  background-image: url('/assets/background/png/hero_bg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+section.social-section {
+  background-image: url('/assets/background/png/social_top_bg.png'),
+    url('/assets/background/png/social_bottom_bg_hide_in_mobile.png');
+  background-position: top center, bottom center;
+  background-repeat: no-repeat, no-repeat;
+}
+
+section.initiatives-section {
+  background-image: url('/assets/background/png/featured_section_bg.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+section.merch-section {
+  background-image: url('/assets/background/png/merch_bg.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+section.movement-section {
+  background: transparent;
+}
+
+.footer {
+  background-image: url('/assets/background/png/top-transition.png'),
+    url('/assets/background/png/bottom_bg.png');
+  background-position: top center, bottom center;
+  background-repeat: repeat-x, no-repeat;
+}
