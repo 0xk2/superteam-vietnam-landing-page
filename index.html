@@ -239,6 +239,23 @@
           left: 100%;
         }
       }
+
+      /* Hide all scrollbars on Twitter timeline */
+      .timeline-wrapper iframe,
+      .timeline-wrapper iframe *,
+      .social-grid iframe,
+      .social-grid iframe * {
+        overflow: hidden !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+      }
+
+      .timeline-wrapper iframe::-webkit-scrollbar,
+      .social-grid iframe::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+      }
     </style>
 
     <!-- Preload critical resources with high priority -->
@@ -375,11 +392,22 @@
         <p class="section-subtitle">
           Our social media cover latest events, policy advocacy. We are the voice of @Solana talents in Vietnam.
         </p>
-        
+
         <div class="social-grid" role="region" aria-label="Social media posts">
-          <iframe src="https://www.juicer.io/api/feeds/superteamvn/iframe" scrolling="no" 
-            frameborder="0" width="100%" height="1000" 
-            style="display:block;margin:0 auto;overflow:hidden"></iframe>
+          <div class="timeline-container">
+            <div class="timeline-loading" id="timeline-loading">
+              <div class="loading-spinner"></div>
+              <p>Loading timeline<span class="loading-dots"></span></p>
+            </div>
+            <div class="timeline-wrapper" id="timeline-wrapper">
+              <a class="twitter-timeline"
+                 data-theme="dark"
+                 data-height="1000"
+                 data-chrome="noheader nofooter noborders transparent noscrollbar"
+                 href="https://twitter.com/superteamvn?ref_src=twsrc%5Etfw">
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1055,6 +1083,224 @@
         "areaServed": "Vietnam",
         "keywords": "Web3, Solana, Blockchain, Vietnam, Community, Builders, Developers"
       }
+    </script>
+
+    <!-- Twitter Widgets Script -->
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <!-- Twitter Timeline Loading Handler -->
+    <script>
+      // Enhanced detection with content verification
+      (function() {
+        console.log('✓ Timeline loader script started');
+
+        let checkAttempts = 0;
+        const maxAttempts = 150; // 15 seconds (100ms interval)
+        let iframeFound = false;
+        let iframeFoundTime = 0;
+
+        function hideLoading() {
+          console.log('✓ Hiding loading overlay');
+          const loading = document.getElementById('timeline-loading');
+          if (loading) {
+            loading.classList.add('hidden');
+            console.log('✓ Loading overlay hidden');
+          }
+        }
+
+        function showFallback() {
+          console.log('⚠ Twitter embed failed - loading Facebook fallback');
+          const wrapper = document.getElementById('timeline-wrapper');
+          if (wrapper) {
+            wrapper.innerHTML = `
+              <div style="
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 20px;
+                padding: 2rem;
+                backdrop-filter: blur(10px);
+                max-width: 600px;
+                margin: 0 auto;
+              ">
+                <div style="
+                  text-align: center;
+                  margin-bottom: 1.5rem;
+                  padding-bottom: 1.5rem;
+                  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                ">
+                  <h3 style="
+                    font-size: 1.3rem;
+                    font-weight: 600;
+                    margin-bottom: 0.5rem;
+                    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                  ">Follow us on Facebook</h3>
+                  <p style="
+                    opacity: 0.7;
+                    font-size: 0.9rem;
+                  ">Twitter timeline unavailable, showing Facebook feed instead</p>
+                </div>
+
+                <div id="fb-root"></div>
+                <div class="fb-page"
+                     data-href="https://www.facebook.com/solanasuperteamvietnam"
+                     data-tabs="timeline"
+                     data-width="500"
+                     data-height="800"
+                     data-small-header="true"
+                     data-adapt-container-width="true"
+                     data-hide-cover="false"
+                     data-show-facepile="false">
+                  <blockquote cite="https://www.facebook.com/solanasuperteamvietnam" class="fb-xfbml-parse-ignore">
+                    <a href="https://www.facebook.com/solanasuperteamvietnam">Superteam Vietnam</a>
+                  </blockquote>
+                </div>
+
+                <div style="
+                  margin-top: 1.5rem;
+                  padding-top: 1.5rem;
+                  border-top: 1px solid rgba(255, 255, 255, 0.1);
+                  display: flex;
+                  gap: 1rem;
+                  justify-content: center;
+                  flex-wrap: wrap;
+                ">
+                  <a href="https://x.com/superteamvn"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     style="
+                       display: inline-flex;
+                       align-items: center;
+                       gap: 0.5rem;
+                       background: rgba(255, 255, 255, 0.05);
+                       color: white;
+                       padding: 0.5rem 1.5rem;
+                       border-radius: 10px;
+                       text-decoration: none;
+                       font-weight: 500;
+                       font-size: 0.9rem;
+                       border: 1px solid rgba(255, 255, 255, 0.1);
+                       transition: all 0.2s ease;
+                     "
+                     onmouseover="this.style.background='rgba(255, 255, 255, 0.1)'"
+                     onmouseout="this.style.background='rgba(255, 255, 255, 0.05)'"
+                  >
+                    <svg style="width: 16px; height: 16px;" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    X/Twitter
+                  </a>
+                  <a href="https://www.facebook.com/solanasuperteamvietnam"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     style="
+                       display: inline-flex;
+                       align-items: center;
+                       gap: 0.5rem;
+                       background: rgba(66, 103, 178, 0.2);
+                       color: white;
+                       padding: 0.5rem 1.5rem;
+                       border-radius: 10px;
+                       text-decoration: none;
+                       font-weight: 500;
+                       font-size: 0.9rem;
+                       border: 1px solid rgba(66, 103, 178, 0.3);
+                       transition: all 0.2s ease;
+                     "
+                     onmouseover="this.style.background='rgba(66, 103, 178, 0.3)'"
+                     onmouseout="this.style.background='rgba(66, 103, 178, 0.2)'"
+                  >
+                    <svg style="width: 16px; height: 16px;" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    Facebook
+                  </a>
+                </div>
+              </div>
+            `;
+
+            // Load Facebook SDK
+            console.log('Loading Facebook SDK...');
+            if (!window.FB) {
+              (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0";
+                fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));
+            } else {
+              // SDK already loaded, parse the new plugin
+              if (window.FB && window.FB.XFBML) {
+                window.FB.XFBML.parse();
+              }
+            }
+          }
+          hideLoading();
+        }
+
+        function checkIframeContent(iframe) {
+          try {
+            // Check if iframe has reasonable height (indicates content loaded)
+            const height = iframe.offsetHeight;
+            console.log('Iframe height:', height);
+
+            if (height > 100) {
+              console.log('✓ Iframe has content (height > 100px)');
+              return true;
+            }
+            return false;
+          } catch (e) {
+            console.log('Could not check iframe content:', e);
+            // Assume it has content if we can't check (cross-origin)
+            return true;
+          }
+        }
+
+        // Check if iframe exists and has content every 100ms
+        const checkInterval = setInterval(function() {
+          checkAttempts++;
+          if (checkAttempts % 10 === 0) {
+            console.log('Check attempt:', checkAttempts);
+          }
+
+          // Check if Twitter has created an iframe
+          const wrapper = document.getElementById('timeline-wrapper');
+          if (wrapper) {
+            const iframe = wrapper.querySelector('iframe');
+
+            if (iframe && !iframeFound) {
+              console.log('✓ Twitter iframe found!');
+              iframeFound = true;
+              iframeFoundTime = checkAttempts;
+            }
+
+            // If iframe found, wait a bit then check if it has content
+            if (iframeFound && checkAttempts - iframeFoundTime >= 20) {
+              // 2 seconds after iframe appeared, check content
+              if (checkIframeContent(iframe)) {
+                console.log('✓ Timeline loaded successfully');
+                clearInterval(checkInterval);
+                setTimeout(hideLoading, 500);
+                return;
+              } else {
+                console.log('⚠ Iframe exists but appears empty');
+                // Continue checking for a bit longer
+              }
+            }
+          }
+
+          // Show fallback after max attempts
+          if (checkAttempts >= maxAttempts) {
+            console.log('⚠ Max attempts reached (15s), showing fallback');
+            clearInterval(checkInterval);
+            showFallback();
+          }
+        }, 100);
+
+      })();
     </script>
   </body>
 </html>

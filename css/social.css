@@ -2,14 +2,150 @@
 .social-section {
   padding: var(--spacing-xl) var(--spacing-md);
   text-align: center;
+  overflow: hidden;
 }
 
 .social-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: var(--spacing-md) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Timeline container - holds both loading and timeline */
+.timeline-container {
+  width: 100%;
+  position: relative;
+  min-height: 500px;
+}
+
+/* Timeline wrapper - full width with scrollbar masking */
+.timeline-wrapper {
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.timeline-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  background: linear-gradient(
+    to left,
+    #301609 0%,
+    #301609 20%,
+    rgba(48, 22, 9, 0.8) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Add subtle fade on edges for polished look */
+.timeline-wrapper::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  background: linear-gradient(
+    to right,
+    rgba(48, 22, 9, 0.3) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+.timeline-wrapper .twitter-timeline {
+  width: 100% !important;
+  max-width: 100% !important;
+  border: none !important;
+}
+
+/* Loading state for timeline - absolute positioned overlay */
+.timeline-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(48, 22, 9, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  text-align: center;
+  width: 100%;
+  min-height: 400px;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 20;
+  transition: opacity 0.3s ease;
+}
+
+/* Hidden state for loading */
+.timeline-loading.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.timeline-loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+/* Hide ALL scrollbars on timeline and iframe */
+.timeline-wrapper,
+.timeline-wrapper * {
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.timeline-wrapper::-webkit-scrollbar,
+.timeline-wrapper *::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.social-grid iframe {
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.social-grid iframe::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 .social-post {
@@ -28,4 +164,52 @@
 
 .social-post:hover {
   transform: translateY(-5px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .social-section {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+
+  .social-grid {
+    max-width: 100%;
+    padding: var(--spacing-sm) 0;
+  }
+
+  .timeline-container {
+    min-height: 600px;
+  }
+
+  .timeline-loading {
+    max-width: 100%;
+    min-height: 300px;
+    padding: 2rem 1rem;
+  }
+
+  .timeline-wrapper {
+    padding: 0;
+  }
+
+  .timeline-wrapper::after {
+    width: 25px;
+  }
+
+  .timeline-wrapper::before {
+    width: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-container {
+    min-height: 500px;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
 }

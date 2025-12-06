@@ -1,21 +1,29 @@
-/* Video Section - optimized */
+/* Video Section - enhanced */
 .video-section {
   padding: var(--spacing-xl) var(--spacing-md);
 }
 
 .video-container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
   position: relative;
-  background: var(--color-dark-overlay);
-  border-radius: var(--border-radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--border-radius-lg);
   overflow: hidden;
   aspect-ratio: 16/9;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--transition-standard);
+}
+
+.video-container:hover {
+  box-shadow: 0 12px 48px rgba(255, 107, 53, 0.2);
+  border-color: rgba(255, 107, 53, 0.3);
+  transform: translateY(-2px);
 }
 
 .video-placeholder {
