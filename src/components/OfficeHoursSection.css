@@ -1,0 +1,83 @@
+.office-hours {
+  padding-block: 60px 120px;
+}
+
+.office-hours__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+
+.office-hours__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.office-hours__sub {
+  max-width: 520px;
+}
+
+.office-hours__cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  width: 100%;
+  max-width: 1120px;
+}
+
+.offer-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 32px 40px 32px 32px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 5.7%, rgba(255, 255, 255, 0.13) 119.5%);
+}
+
+.offer-card__img {
+  width: 159px;
+  height: 159px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.offer-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.offer-card__title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+
+.offer-card__desc {
+  font-size: 16px;
+  line-height: 1.48;
+  color: var(--text-subtle);
+}
+
+@media (max-width: 900px) {
+  .office-hours {
+    padding-block: 40px 80px;
+  }
+
+  .office-hours__cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .offer-card {
+    flex-direction: column;
+    gap: 32px;
+    padding: 24px;
+  }
+}

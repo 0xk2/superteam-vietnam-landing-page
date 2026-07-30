@@ -1,0 +1,124 @@
+.faq {
+  position: relative;
+  padding: 80px var(--gutter);
+  overflow: hidden;
+}
+
+.faq__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: min(760px, 100%);
+  margin-inline: auto;
+}
+
+.faq__heading {
+  font-size: clamp(38px, 4.5vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -2px;
+}
+
+.faq__groups {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq__category {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-subless);
+}
+
+.faq-item + .faq-item {
+  border-top: 1px solid transparent;
+  border-image: linear-gradient(90deg, transparent, var(--white-15) 10% 90%, transparent) 1;
+}
+
+.faq-item__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  padding: 20px 8px 20px 0;
+  text-align: left;
+}
+
+.faq-item__question {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.faq-item__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-right: 8px;
+  transition: transform 0.25s ease;
+}
+
+.faq-item--open .faq-item__icon {
+  transform: rotate(45deg);
+}
+
+.faq-item__answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.faq-item__answer p {
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-subless);
+  max-width: 640px;
+}
+
+.faq-item--open .faq-item__answer {
+  grid-template-rows: 1fr;
+}
+
+.faq-item--open .faq-item__answer p {
+  padding-bottom: 20px;
+}
+
+.faq__watermark {
+  position: absolute;
+  right: 0;
+  bottom: 60px;
+  width: 174px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .faq__watermark {
+    display: none;
+  }
+
+  .faq__heading {
+    letter-spacing: -1px;
+  }
+
+  .faq-item__toggle {
+    gap: 16px;
+    padding-block: 20px;
+  }
+
+  .faq-item__question {
+    font-size: 16px;
+  }
+
+  .faq-item__answer p {
+    font-size: 14px;
+    line-height: 1.48;
+  }
+}

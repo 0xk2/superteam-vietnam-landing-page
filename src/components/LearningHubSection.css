@@ -1,0 +1,48 @@
+.hub {
+  position: relative;
+  padding: 200px var(--gutter);
+  overflow: hidden;
+}
+
+.hub__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hub__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mask-image: linear-gradient(180deg, transparent 0%, black 20%, black 80%, transparent 100%);
+}
+
+.hub__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.hub__title {
+  font-size: clamp(28px, 4.5vw, 52px);
+  font-weight: 700;
+  line-height: 1.24;
+  letter-spacing: -2px;
+}
+
+.hub__content .btn {
+  margin-top: 24px;
+}
+
+@media (max-width: 640px) {
+  .hub {
+    padding-block: 120px;
+  }
+
+  .hub__title {
+    letter-spacing: -1px;
+  }
+}
