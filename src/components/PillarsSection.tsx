@@ -5,9 +5,27 @@ import objDynamic from '../assets/figma/obj-dynamic.png'
 import './PillarsSection.css'
 
 const PILLARS = [
-  { image: objSphere, title: ['Institutional', 'Access'], tilt: 'left' },
-  { image: objSquare, title: ['Founder', 'Acceleration'], tilt: 'none' },
-  { image: objDynamic, title: ['Talent', 'Pipeline'], tilt: 'right' },
+  {
+    image: objSphere,
+    title: ['Institutional', 'Access'],
+    tilt: 'left',
+    description:
+      'Bring banks, funds, and serious companies onto Solana — and open those doors for teams building here.',
+  },
+  {
+    image: objSquare,
+    title: ['Founder', 'Acceleration'],
+    tilt: 'none',
+    description:
+      'Grow builders into founders who can raise: mentors, capital intros, and hands-on support.',
+  },
+  {
+    image: objDynamic,
+    title: ['Talent', 'Pipeline'],
+    tilt: 'right',
+    description:
+      'A steady pipeline of proven builders — from bounties and workshops to full-time roles.',
+  },
 ] as const
 
 export default function PillarsSection() {
@@ -33,11 +51,16 @@ export default function PillarsSection() {
                 <div className="pillar-card__img">
                   <img src={pillar.image} alt="" />
                 </div>
-                <h3 className="pillar-card__title">
-                  {pillar.title[0]}
-                  <br />
-                  {pillar.title[1]}
-                </h3>
+                <div className="pillar-card__meta">
+                  <h3 className="pillar-card__title">
+                    {pillar.title[0]}
+                    <br />
+                    {pillar.title[1]}
+                  </h3>
+                  <div className="pillar-card__desc-wrap">
+                    <p className="pillar-card__desc">{pillar.description}</p>
+                  </div>
+                </div>
               </article>
             </div>
           ))}
