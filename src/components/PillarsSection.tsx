@@ -2,7 +2,6 @@ import ecoBg from '../assets/figma/eco-bg.png'
 import objSphere from '../assets/figma/obj-sphere.png'
 import objSquare from '../assets/figma/obj-square.png'
 import objDynamic from '../assets/figma/obj-dynamic.png'
-import QuoteCard from './QuoteCard'
 import './PillarsSection.css'
 
 const PILLARS = [
@@ -44,9 +43,6 @@ export default function PillarsSection() {
           ))}
         </div>
 
-        <div className="pillars__quote-wrap">
-          <QuoteCard />
-        </div>
       </div>
     </section>
   )

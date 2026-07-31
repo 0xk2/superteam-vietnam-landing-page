@@ -1,7 +1,11 @@
+import { useState } from 'react'
 import ctaBg from '../assets/figma/cta-bg.png'
+import ContactModal from './ContactModal'
 import './CtaSection.css'
 
 export default function CtaSection() {
+  const [modalOpen, setModalOpen] = useState(false)
+
   return (
     <section className="cta">
       <div className="cta__card">
@@ -12,16 +16,12 @@ export default function CtaSection() {
             Builder, investor, or partner who wants to build from Vietnam
             <br />— not just for it? Come talk to us.
           </p>
-          <a
-            className="btn btn--primary"
-            href="https://x.com/SuperteamVN"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <button className="btn btn--primary" onClick={() => setModalOpen(true)}>
             Get In Touch
-          </a>
+          </button>
         </div>
       </div>
+      <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </section>
   )
 }

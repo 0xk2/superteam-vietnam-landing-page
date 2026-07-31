@@ -1,6 +1,6 @@
 .pillars {
   position: relative;
-  padding-block: 80px 0;
+  padding-block: 80px 120px;
   overflow: hidden;
 }
 
@@ -101,12 +101,6 @@
   letter-spacing: -0.5px;
 }
 
-.pillars__quote-wrap {
-  display: flex;
-  justify-content: center;
-  padding-block: 120px;
-}
-
 @media (max-width: 900px) {
   .pillars__grid {
     grid-template-columns: 1fr;
@@ -116,20 +110,11 @@
   .pillars__slot {
     padding-top: 0;
   }
-
-  .pillars__quote-wrap {
-    padding-block: 60px;
-  }
 }
 
 @media (max-width: 640px) {
   .pillar-card {
     height: 360px;
-  }
-
-  /* on mobile the quote card moves up to the top of the team section */
-  .pillars__quote-wrap {
-    display: none;
   }
 
   .pillars {

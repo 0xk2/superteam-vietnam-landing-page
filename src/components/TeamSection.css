@@ -16,15 +16,15 @@
   pointer-events: none;
 }
 
-/* mobile-only slot for the quote card, above the section heading */
+/* the quote card sits above the section heading on every viewport */
 .team__quote {
-  display: none;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 100px;
 }
 
 @media (max-width: 640px) {
   .team__quote {
-    display: flex;
-    justify-content: center;
     padding-bottom: 60px;
   }
 }
