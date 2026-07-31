@@ -51,7 +51,7 @@ export default function Hero() {
         <p className="hero__sub">
           Shipping a product, raising a round, or backing the next one?
           <br />
-            Find the people and resources to do it right here.
+          {' '}Find the people and resources to do it right here.
         </p>
         <div className="hero__actions">
           <a 
