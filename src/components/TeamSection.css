@@ -7,7 +7,7 @@
   position: absolute;
   top: 160px;
   left: 55%;
-  width: 461px;
+  width: min(461px, 45vw);
   height: 200px;
   border-radius: 999px;
   background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.35), rgba(9, 0, 16, 0));

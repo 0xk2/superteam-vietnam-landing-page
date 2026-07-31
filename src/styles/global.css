@@ -36,6 +36,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -46,6 +48,7 @@ body {
   line-height: 1.48;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  overflow-x: clip;
 }
 
 img {
@@ -144,6 +147,7 @@ button {
 /* Faint 80px blueprint grid with a purple wash, behind Team + Office Hours */
 .grid-band {
   position: relative;
+  overflow: hidden;
 }
 
 .grid-band::before {

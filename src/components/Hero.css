@@ -166,3 +166,10 @@
     white-space: nowrap;
   }
 }
+
+/* very narrow phones: let the CTA buttons stack instead of overflowing */
+@media (max-width: 374px) {
+  .hero__actions {
+    flex-wrap: wrap;
+  }
+}
