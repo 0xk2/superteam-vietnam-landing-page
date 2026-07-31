@@ -68,7 +68,10 @@ export default function SystemSection() {
 
       <div className="system__inner">
         <div className="system__intro">
-          <h2 className="section-heading">Earn here. Build here. Raise here.</h2>
+          <h2 className="section-heading">
+            <span className="nowrap">Earn here.</span> <span className="nowrap">Build here.</span>{' '}
+            <span className="nowrap">Raise here.</span>
+          </h2>
           <p className="section-sub">
             One system. Each step feeds the next, and the value compounds here.
           </p>

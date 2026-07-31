@@ -98,6 +98,10 @@ button {
   color: var(--text-subtle);
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 /* --------------------------------- buttons ---------------------------------- */
 .btn {
   display: inline-flex;

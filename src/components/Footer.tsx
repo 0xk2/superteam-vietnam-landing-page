@@ -42,8 +42,8 @@ export default function Footer() {
               <img src={logoText} alt="superteamvn" className="footer__logo-text" />
             </a>
             <p className="footer__tagline">
-              Vietnam's home for Solana builders, founders &amp; capital. Keeping the value home.
-              🇻🇳
+              Vietnam's home for Solana builders, founders &amp; capital. Keeping the value
+              home.{' '}🇻🇳
             </p>
           </div>
           <div className="footer__connect">

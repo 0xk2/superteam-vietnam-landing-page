@@ -1,5 +1,6 @@
 import photoLynn from '../assets/figma/photo-lynn.jpg'
 import photoDaphne from '../assets/figma/photo-daphne.jpg'
+import QuoteCard from './QuoteCard'
 import './TeamSection.css'
 
 const MEMBERS = [
@@ -21,6 +22,9 @@ export default function TeamSection() {
   return (
     <section className="team">
       <div className="team__glow" aria-hidden />
+      <div className="container team__quote">
+        <QuoteCard />
+      </div>
       <div className="container team__layout">
         <div className="team__intro">
           <h2 className="section-heading">The operators behind the builders</h2>

@@ -16,6 +16,19 @@
   pointer-events: none;
 }
 
+/* mobile-only slot for the quote card, above the section heading */
+.team__quote {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .team__quote {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 60px;
+  }
+}
+
 .team__layout {
   display: flex;
   align-items: flex-start;
