@@ -52,11 +52,7 @@ export default function PillarsSection() {
                   <img src={pillar.image} alt="" />
                 </div>
                 <div className="pillar-card__meta">
-                  <h3 className="pillar-card__title">
-                    {pillar.title[0]}
-                    <br />
-                    {pillar.title[1]}
-                  </h3>
+                  <h3 className="pillar-card__title">{pillar.title.join(' ')}</h3>
                   <div className="pillar-card__desc-wrap">
                     <p className="pillar-card__desc">{pillar.description}</p>
                   </div>
