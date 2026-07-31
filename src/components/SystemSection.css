@@ -145,7 +145,7 @@
   }
 
   .system-item {
-    padding: 24px 0;
+    padding: 32px;
   }
 
   .system-item::after {
