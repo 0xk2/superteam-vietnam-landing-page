@@ -1,0 +1,123 @@
+.pillars {
+  position: relative;
+  padding-block: 80px 120px;
+  overflow: hidden;
+}
+
+.pillars__bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 668px;
+  pointer-events: none;
+}
+
+.pillars__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+  mask-image: radial-gradient(90% 100% at 50% 100%, black 30%, transparent 100%);
+}
+
+.pillars__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 645px;
+}
+
+/* staggered cards */
+.pillars__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.pillars__slot {
+  padding-top: var(--stagger, 0);
+}
+
+.pillar-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 440px;
+  border: 1px solid var(--white-10);
+  border-radius: 16px;
+  background: linear-gradient(180deg, var(--white-5), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(13.5px);
+  overflow: hidden;
+}
+
+/* faint blueprint lines inside each card, tilted per-card like the design */
+.pillar-card__lines {
+  position: absolute;
+  inset: -40%;
+  background-image:
+    repeating-linear-gradient(to right, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 80px),
+    repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 80px);
+  mask-image: radial-gradient(60% 60% at 50% 50%, black 20%, transparent 75%);
+}
+
+.pillar-card--left .pillar-card__lines {
+  transform: rotate(-30deg);
+}
+
+.pillar-card--right .pillar-card__lines {
+  transform: rotate(30deg);
+}
+
+.pillar-card__img {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  min-height: 0;
+}
+
+.pillar-card__img img {
+  height: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.pillar-card:hover .pillar-card__img img {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.pillar-card__title {
+  position: relative;
+  padding: 32px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+
+@media (max-width: 900px) {
+  .pillars__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .pillars__slot {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .pillar-card {
+    height: 360px;
+  }
+
+  .pillars {
+    padding-bottom: 60px;
+  }
+}

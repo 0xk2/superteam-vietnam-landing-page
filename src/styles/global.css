@@ -1,0 +1,173 @@
+/* ---------------------------------- tokens --------------------------------- */
+:root {
+  /* ITC Avant Garde Gothic is the design font; Poppins is its free stand-in.
+     Drop licensed font files in and prepend the family here to upgrade. */
+  --font-sans: 'ITC Avant Garde Gothic', 'Poppins', sans-serif;
+  --font-display: 'Fraunces', serif;
+  --font-label: 'Lexend', sans-serif;
+
+  --bg-page: #08040f;
+  --bg-deep: #0f032d;
+  --purple-500: #5b10ea;
+  --purple-400: #895ae2;
+
+  --text: #ffffff;
+  --text-subtle: rgba(255, 255, 255, 0.8);
+  --text-subless: rgba(255, 255, 255, 0.5);
+
+  --white-5: rgba(255, 255, 255, 0.05);
+  --white-10: rgba(255, 255, 255, 0.1);
+  --white-15: rgba(255, 255, 255, 0.15);
+  --white-20: rgba(255, 255, 255, 0.2);
+  --white-50: rgba(255, 255, 255, 0.5);
+
+  --container: 1280px;
+  --gutter: clamp(20px, 5vw, 80px);
+}
+
+/* ---------------------------------- reset ---------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  background: var(--bg-page);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.48;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* --------------------------------- layout ---------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* -------------------------------- typography -------------------------------- */
+.section-heading {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -1.5px;
+}
+
+@media (max-width: 640px) {
+  .section-heading {
+    letter-spacing: -1px;
+  }
+
+  .section-sub {
+    font-size: 16px;
+  }
+}
+
+.section-sub {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text-subtle);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* --------------------------------- buttons ---------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  color: var(--text);
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.btn--primary {
+  background: var(--purple-500);
+}
+
+.btn--primary:hover {
+  background: #6b24f5;
+}
+
+.btn--outline {
+  border: 1.5px solid var(--purple-400);
+}
+
+.btn--outline:hover {
+  background: rgba(137, 90, 226, 0.15);
+}
+
+/* ------------------------- shared grid background band ---------------------- */
+/* Faint 80px blueprint grid with a purple wash, behind Team + Office Hours */
+.grid-band {
+  position: relative;
+  overflow: hidden;
+}
+
+.grid-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(to right, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 80px),
+    repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 80px),
+    linear-gradient(
+      180deg,
+      rgba(9, 3, 45, 0) 0%,
+      rgba(54, 26, 110, 0.5) 67.5%,
+      rgba(30, 14, 63, 0.6) 80%,
+      rgba(5, 1, 14, 0) 97.5%
+    );
+  mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+
+.grid-band > * {
+  position: relative;
+}
