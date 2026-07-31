@@ -3,7 +3,6 @@ import noise from '../assets/figma/noise.jpg'
 import logoMark from '../assets/figma/logo-mark.svg'
 import logoText from '../assets/figma/logo-text.svg'
 import iconX from '../assets/figma/icon-x.svg'
-import iconArrowLink from '../assets/figma/icon-arrow-link.svg'
 import './Hero.css'
 
 export default function Hero() {
@@ -32,7 +31,7 @@ export default function Hero() {
           </a>
           <a
             className="hero__nav-link"
-            href="https://x.com/SuperteamVN"
+            href="https://solana.com/news"
             target="_blank"
             rel="noreferrer"
           >
@@ -52,12 +51,16 @@ export default function Hero() {
         <p className="hero__sub">
           Shipping a product, raising a round, or backing the next one?
           <br />
-          Find the people and resources to do it right here.
+            Find the people and resources to do it right here.
         </p>
         <div className="hero__actions">
-          <a className="btn btn--primary" href="#pillars">
+          <a 
+          className="btn btn--primary" 
+          href="https://x.com/lynnwwins/status/2067959617397850121?s=46&t=WVuhZKP31n-CeEAK9wcf-g"
+          target="_blank"
+          rel="noreferrer"
+          >
             Learn More
-            <img src={iconArrowLink} alt="" />
           </a>
           <a
             className="btn btn--outline"
