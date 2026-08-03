@@ -37,9 +37,9 @@ export default function PillarsSection() {
 
       <div className="container">
         <div className="pillars__intro">
-          <h2 className="section-heading">Build, raise, and keep the value home.</h2>
+          <h2 className="section-heading">Build, raise and keep the value home.</h2>
           <p className="section-sub">
-            No token, no fees, no equity — we don't take a cut of what you build. We're here to help Vietnamese teams build, raise, and keep the value onshore.
+            No token, no fees, no equity — we don't take a cut of what you build. We're here to help Vietnamese teams build, raise and keep the value onshore.
           </p>
         </div>
 
