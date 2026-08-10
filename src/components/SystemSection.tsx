@@ -30,7 +30,7 @@ const SYSTEMS: SystemItem[] = [
     title: 'Education',
     description:
       "Learn by building: workshops, bounties, and mentors who've actually shipped and raised on Solana.",
-    cta: { label: 'Subscribe Our Luma', href: 'https://luma.com/user/SuperteamVN' },
+    cta: { label: 'Subscribe Our Luma', href: 'https://luma.com/superteam-vietnam?k=c' },
   },
   {
     icon: iconRocket,
