@@ -12,7 +12,7 @@ const SOCIALS = [
   { icon: iconXLogo, label: 'Follow us on X', href: 'https://x.com/SuperteamVN' },
   {
     icon: iconTelegram,
-    label: 'Join our Telegram channel',
+    label: 'Read announcements on our Telegram channel',
     href: 'https://t.me/solanainvietnam',
   },
   {
@@ -63,6 +63,15 @@ export default function Footer() {
                 </a>
               ))}
             </div>
+            <a
+              className="btn footer__group-btn"
+              href="https://t.me/+zTUITe-sgx42ZmNl"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={iconTelegram} alt="" />
+              Join the Community Chat
+            </a>
           </div>
         </div>
         <p className="footer__copyright">© 2026 Superteam Vietnam. All rights reserved.</p>

@@ -111,6 +111,17 @@
   height: 24px;
 }
 
+.footer__group-btn {
+  align-self: flex-start;
+  border: 1.5px solid var(--white-50);
+  background: var(--white-10);
+}
+
+.footer__group-btn:hover {
+  background: var(--white-20);
+  border-color: #ffffff;
+}
+
 .footer__copyright {
   font-size: 14px;
   font-weight: 500;
