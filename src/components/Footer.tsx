@@ -16,6 +16,11 @@ const SOCIALS = [
     href: 'https://t.me/solanainvietnam',
   },
   {
+    icon: iconTelegram,
+    label: 'Join the Ship Yard on Telegram',
+    href: 'https://t.me/+zTUITe-sgx42ZmNl',
+  },
+  {
     icon: iconLinkedin,
     label: 'Connect on LinkedIn',
     href: 'https://www.linkedin.com/company/superteam-vietnam/posts',
@@ -63,15 +68,6 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <a
-              className="btn footer__group-btn"
-              href="https://t.me/+zTUITe-sgx42ZmNl"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={iconTelegram} alt="" />
-              Join the Community Chat
-            </a>
           </div>
         </div>
         <p className="footer__copyright">© 2026 Superteam Vietnam. All rights reserved.</p>
