@@ -12,11 +12,6 @@ const SOCIALS = [
   { icon: iconXLogo, label: 'Follow us on X', href: 'https://x.com/SuperteamVN' },
   {
     icon: iconTelegram,
-    label: 'Read announcements on our Telegram channel',
-    href: 'https://t.me/solanainvietnam',
-  },
-  {
-    icon: iconTelegram,
     label: 'Join the Ship Yard on Telegram',
     href: 'https://t.me/+zTUITe-sgx42ZmNl',
   },
