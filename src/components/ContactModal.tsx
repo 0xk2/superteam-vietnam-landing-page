@@ -1,4 +1,4 @@
-import { useEffect, useRef, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import iconClose from '../assets/figma/icon-close.svg'
 import iconChevronDown from '../assets/figma/icon-chevron-down.svg'
 import './ContactModal.css'
@@ -7,6 +7,14 @@ const INQUIRY_TYPES = ['Building a project', 'Investing', 'Partnership', 'Joinin
 
 const CONTACT_EMAIL = 'vietnam@superteam.fun'
 
+// Apps Script web app: appends to the submissions sheet and mails a notification.
+const ENDPOINT =
+  'https://script.google.com/macros/s/AKfycbxjTUAPIzareof7gZyDQCOXWaN4-R4wV77-Z3efjP1ANtMOkilsw5UA9s1BUfPb13dJ/exec'
+// Must match SECRET in the Apps Script. Public by nature - it only turns away drive-by bots.
+const SECRET = 'aaaaa'
+
+type Status = 'idle' | 'sending' | 'sent' | 'error'
+
 type ContactModalProps = {
   open: boolean
   onClose: () => void
@@ -14,6 +22,11 @@ type ContactModalProps = {
 
 export default function ContactModal({ open, onClose }: ContactModalProps) {
   const dialogRef = useRef<HTMLDivElement>(null)
+  const [status, setStatus] = useState<Status>('idle')
+
+  useEffect(() => {
+    if (open) setStatus('idle')
+  }, [open])
 
   useEffect(() => {
     if (!open) return
@@ -30,17 +43,33 @@ export default function ContactModal({ open, onClose }: ContactModalProps) {
 
   if (!open) return null
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    const name = data.get('name') as string
-    const contact = data.get('contact') as string
-    const type = data.get('type') as string
-    const message = data.get('message') as string
-    const subject = encodeURIComponent(`[${type || 'Inquiry'}] from ${name}`)
-    const body = encodeURIComponent(`Name: ${name}\nContact: ${contact}\nInquiry type: ${type}\n\n${message}`)
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
-    onClose()
+    const form = event.currentTarget
+    const data = new FormData(form)
+    setStatus('sending')
+
+    try {
+      // text/plain keeps this a simple request; Apps Script cannot answer a CORS preflight.
+      const response = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          secret: SECRET,
+          name: data.get('name'),
+          contact: data.get('contact'),
+          type: data.get('type'),
+          message: data.get('message'),
+          company: data.get('company'),
+        }),
+      })
+      const result = await response.json()
+      if (!result.ok) throw new Error(result.error ?? 'rejected')
+      form.reset()
+      setStatus('sent')
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -69,6 +98,15 @@ export default function ContactModal({ open, onClose }: ContactModalProps) {
         </div>
 
         <form className="contact-modal__form" onSubmit={handleSubmit}>
+          <input
+            className="contact-modal__honeypot"
+            type="text"
+            name="company"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+          />
+
           <div className="contact-modal__row">
             <label className="contact-field">
               <span className="contact-field__label">Name</span>
@@ -121,9 +159,23 @@ export default function ContactModal({ open, onClose }: ContactModalProps) {
             />
           </label>
 
-          <button className="btn btn--primary contact-modal__submit" type="submit">
-            Send It Over
+          <button
+            className="btn btn--primary contact-modal__submit"
+            type="submit"
+            disabled={status === 'sending'}
+          >
+            {status === 'sending' ? 'Sending...' : 'Send It Over'}
           </button>
+
+          {status === 'sent' ? (
+            <p className="contact-modal__status" role="status">
+              Thanks - we got it. We'll get back to you soon.
+            </p>
+          ) : status === 'error' ? (
+            <p className="contact-modal__status contact-modal__status--error" role="status">
+              Something went wrong. Reach us at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+            </p>
+          ) : null}
         </form>
       </div>
     </div>

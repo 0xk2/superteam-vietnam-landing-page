@@ -143,6 +143,32 @@
   align-self: flex-start;
 }
 
+.contact-modal__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.contact-modal__honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.contact-modal__status {
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+  color: var(--text-subtle);
+}
+
+.contact-modal__status--error a {
+  color: var(--purple-400);
+  text-decoration: underline;
+}
+
 @media (max-width: 560px) {
   .contact-modal {
     padding: 24px;
