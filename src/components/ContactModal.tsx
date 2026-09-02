@@ -11,7 +11,7 @@ const CONTACT_EMAIL = 'vietnam@superteam.fun'
 const ENDPOINT =
   'https://script.google.com/macros/s/AKfycbxjTUAPIzareof7gZyDQCOXWaN4-R4wV77-Z3efjP1ANtMOkilsw5UA9s1BUfPb13dJ/exec'
 // Must match SECRET in the Apps Script. Public by nature - it only turns away drive-by bots.
-const SECRET = 'aaaaa'
+const SECRET = 'st-vn-2c6747b43f12290f980b82426d8abe2c'
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
