@@ -13,7 +13,7 @@ type SystemItem = {
   icon: string
   title: string
   description: string
-  cta?: { label: string; href: string }
+  cta?: { label: string; href: string; arrow?: boolean }
   comingSoon?: boolean
 }
 
@@ -30,7 +30,10 @@ const SYSTEMS: SystemItem[] = [
     title: 'Education',
     description:
       "Learn by building: workshops, bounties, and mentors who've actually shipped and raised on Solana.",
-    cta: { label: 'Subscribe Our Luma', href: 'https://luma.com/superteam-vietnam?k=c' },
+    cta: {
+      label: 'Visit Education Hub',
+      href: 'https://silent-neptune-5fe.notion.site/Superteam-Vietnam-Education-Hub-230c5ae0b57382d9be5301b45878650f',
+    },
   },
   {
     icon: iconRocket,
@@ -44,7 +47,7 @@ const SYSTEMS: SystemItem[] = [
     title: 'Capital & Institutions',
     description:
       'Warm intros to investors, accelerators, and the institutions coming onto Solana.',
-    cta: { label: 'Subscribe to Office Hours', href: '#office-hours' },
+    cta: { label: 'Subscribe to Office Hours', href: '#office-hours', arrow: true },
   },
   {
     icon: iconLightbulb,
@@ -91,7 +94,7 @@ export default function SystemSection() {
               {item.cta ? (
                 <a className="system-item__cta" href={item.cta.href}>
                   {item.cta.label}
-                  <img src={iconArrowLink} alt="" />
+                  {item.cta.arrow ? <img src={iconArrowLink} alt="" /> : null}
                 </a>
               ) : item.comingSoon ? (
                 <span className="system-item__badge">Coming Soon</span>
