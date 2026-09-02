@@ -50,7 +50,10 @@ const SYSTEMS: SystemItem[] = [
     icon: iconLightbulb,
     title: 'Idea Bank',
     description: 'Stuck on what to build? Grab a vetted idea and get going.',
-    comingSoon: true,
+    cta: {
+      label: 'Browse Ideas',
+      href: 'https://silent-neptune-5fe.notion.site/717c5ae0b57382798a0401597742b43f?v=ec2c5ae0b57382c6a2ee08c1fe40f60e&source=copy_link',
+    },
   },
   {
     icon: iconUser,
