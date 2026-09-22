@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { EVENT } from '../data'
-import Layout from '../Layout'
+import Layout from '../components/Layout'
 
 type Slide = {
   section: string

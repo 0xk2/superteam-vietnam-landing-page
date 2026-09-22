@@ -3,7 +3,7 @@ import titleLockup from '../assets/title-lockup.webp'
 import partners from '../assets/partners.webp'
 import { PAGES } from '../config'
 import { DAYS, EVENT, MENTORS, PREP, PROGRAM, PROMPT } from '../data'
-import Layout, { Actions, Row } from '../Layout'
+import Layout, { Actions, Row } from '../components/Layout'
 
 export default function Home() {
   return (

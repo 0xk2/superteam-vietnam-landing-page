@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
-import partners from './assets/partners.webp'
-import { PAGES } from './config'
-import { EVENT } from './data'
+import partners from '../assets/partners.webp'
+import { PAGES } from '../config'
+import { EVENT } from '../data'
 
 type Page = 'home' | 'learn' | 'projects' | 'contact'
 

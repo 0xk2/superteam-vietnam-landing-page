@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { API, PAGES } from '../config'
 import { EVENT } from '../data'
-import Layout, { PageHead } from '../Layout'
+import Layout, { PageHead } from '../components/Layout'
 
 type Project = {
   id: string

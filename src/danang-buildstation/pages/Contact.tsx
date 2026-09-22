@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { EVENT, ORGANIZERS } from '../data'
-import Layout, { PageHead, Row } from '../Layout'
+import Layout, { PageHead, Row } from '../components/Layout'
 
 const ORGANIZER_EMAIL = 'trunghieubui88@gmail.com'
 
