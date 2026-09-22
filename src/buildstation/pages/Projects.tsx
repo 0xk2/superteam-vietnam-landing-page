@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { API, PAGES } from '../config'
+import { EVENT } from '../data'
 import Layout, { PageHead } from '../Layout'
 
 type Project = {
@@ -16,6 +17,20 @@ type Project = {
 }
 
 const dateFormat = new Intl.DateTimeFormat('en', { day: '2-digit', month: 'short' })
+
+// Projects are submitted through the Road to Colosseum form.
+function SubmitLink() {
+  return (
+    <a
+      className="bs-button bs-button--outline"
+      href={EVENT.roadToColosseumUrl}
+      target="_blank"
+      rel="noreferrer"
+    >
+      Submit a project
+    </a>
+  )
+}
 
 function Gallery() {
   const [projects, setProjects] = useState<Project[]>([])
@@ -57,17 +72,27 @@ function Gallery() {
   if (projects.length === 0) {
     return (
       <div className="bs-state">
-        <p className="bs-state__title">No projects yet.</p>
-        <p className="bs-muted">Projects will show up here after Sunday&apos;s submissions.</p>
-        <a className="bs-button" href={PAGES.learn}>
-          Start learning →
-        </a>
+        <p className="bs-state__title">The first projects are still being built.</p>
+        <p className="bs-muted">
+          Public projects will appear here after teams submit and approve publication. The learning
+          material opens first.
+        </p>
+        <div className="bs-actions">
+          <a className="bs-button" href={PAGES.learn}>
+            Start learning →
+          </a>
+          <SubmitLink />
+        </div>
       </div>
     )
   }
 
   return (
-    <ul className="bs-projects">
+    <>
+      <div className="bs-actions bs-projects__submit">
+        <SubmitLink />
+      </div>
+      <ul className="bs-projects">
       {projects.map((project) => (
         <li key={project.id} className="bs-project">
           <p className="bs-project__meta">
@@ -95,7 +120,8 @@ function Gallery() {
           </p>
         </li>
       ))}
-    </ul>
+      </ul>
+    </>
   )
 }
 
@@ -103,8 +129,9 @@ export default function Projects() {
   return (
     <Layout current="projects">
       <div className="bs-page">
-        <PageHead kicker="Da Nang #BuildStation" title="Project showcase">
-          Projects built at Da Nang #BuildStation. Each team decides whether to publish theirs.
+        <PageHead kicker="Public project gallery" title="Products in motion.">
+          A public record of teams turning the onchain-time prompt into specific products, testing
+          assumptions, and documenting what changed.
         </PageHead>
         <Gallery />
       </div>

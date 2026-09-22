@@ -1005,52 +1005,6 @@ button.bs-button--outline {
   gap: 20px;
 }
 
-.bs-form fieldset {
-  margin: 0;
-  border: 0;
-  border-top: 1px solid var(--bs-ink);
-  padding: 16px 0 24px;
-}
-
-/* Floated so it lays out like a normal block (and like a row title on wide screens). */
-.bs-form legend {
-  float: left;
-  width: 100%;
-  margin-bottom: 18px;
-  padding: 0;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.bs-form__fields {
-  display: grid;
-  clear: both;
-  gap: 20px;
-  max-width: 720px;
-}
-
-@media (min-width: 1024px) {
-  .bs-form fieldset {
-    padding-top: 20px;
-  }
-
-  .bs-form legend {
-    width: 220px;
-    margin: 0;
-  }
-
-  .bs-form__fields {
-    clear: none;
-    margin-left: 260px;
-  }
-
-  .bs-form:has(> fieldset) > .bs-button {
-    margin-left: 260px;
-  }
-}
-
 .bs-form__pair {
   display: grid;
   gap: 20px;
@@ -1060,13 +1014,6 @@ button.bs-button--outline {
   .bs-form__pair {
     grid-template-columns: 1fr 1fr;
   }
-}
-
-.bs-form__error {
-  border-left: 2px solid var(--bs-red);
-  padding: 8px 14px;
-  color: var(--bs-red);
-  font-size: 15px;
 }
 
 .bs-field {
@@ -1106,27 +1053,18 @@ button.bs-button--outline {
   font-size: 13px;
 }
 
-.bs-check {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.bs-check input {
-  width: 16px;
-  height: 16px;
-  margin-top: 4px;
-  accent-color: var(--bs-red);
-}
-
-.bs-check .bs-field__hint {
-  display: block;
-}
-
 .bs-form > .bs-button {
   justify-self: start;
+}
+
+.bs-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+
+.bs-projects__submit {
+  margin-bottom: 24px;
 }
 
 @media (min-width: 900px) {

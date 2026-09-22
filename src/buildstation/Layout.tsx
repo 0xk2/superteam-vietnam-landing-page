@@ -3,7 +3,7 @@ import partners from './assets/partners.webp'
 import { PAGES } from './config'
 import { EVENT } from './data'
 
-type Page = 'home' | 'learn' | 'projects' | 'submit' | 'contact'
+type Page = 'home' | 'learn' | 'projects' | 'contact'
 
 const NAV: [Page, string][] = [
   ['home', 'Event'],

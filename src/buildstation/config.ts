@@ -5,11 +5,9 @@ export const PAGES = {
   home: `${BASE}/`,
   learn: `${BASE}/learn/`,
   projects: `${BASE}/projects/`,
-  submit: `${BASE}/submit/`,
   contact: `${BASE}/contact/`,
 }
 
 export const API = {
   projects: `${BASE}/api/projects`,
-  submissions: `${BASE}/api/submissions`,
 }

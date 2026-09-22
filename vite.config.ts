@@ -12,7 +12,6 @@ export default defineConfig({
         danangBuildstation: 'danang-buildstation/index.html',
         danangBuildstationLearn: 'danang-buildstation/learn/index.html',
         danangBuildstationProjects: 'danang-buildstation/projects/index.html',
-        danangBuildstationSubmit: 'danang-buildstation/submit/index.html',
         danangBuildstationContact: 'danang-buildstation/contact/index.html',
       },
     },

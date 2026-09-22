@@ -144,10 +144,14 @@ export default function Home() {
 
         <Row title="Projects">
           <p className="bs-sheet__text">
-            Teams submit on Sunday. Projects that choose to go public show up in the showcase.
+            Teams submit through the Road to Colosseum form. Projects that choose to go public show
+            up in the gallery.
           </p>
-          <p className="bs-sheet__more">
-            <a href={PAGES.projects}>See the project showcase →</a>
+          <p className="bs-sheet__more bs-links">
+            <a href={EVENT.roadToColosseumUrl} target="_blank" rel="noreferrer">
+              Submit your project →
+            </a>
+            <a href={PAGES.projects}>See the project gallery →</a>
           </p>
         </Row>
 
