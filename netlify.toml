@@ -1,3 +1,10 @@
 [build]
   command = "npm run build"
   publish = "dist"
+
+# Build Station projects are now submitted through the Road to Colosseum form.
+[[redirects]]
+  from = "/danang-buildstation/submit/*"
+  to = "https://forms.gle/MaCQbiJqtTDyuDvu8"
+  status = 302
+  force = true
