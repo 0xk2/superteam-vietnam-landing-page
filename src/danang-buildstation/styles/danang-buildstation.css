@@ -637,25 +637,12 @@ button.bs-button--outline {
 
 .bs-close p {
   max-width: 720px;
-  margin-bottom: 20px;
   font-size: clamp(20px, 2.4vw, 26px);
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.3;
 }
 
-@media (min-width: 1024px) {
-  .bs-close {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 40px;
-  }
-
-  .bs-close p {
-    margin: 0;
-  }
-}
 
 /* ---------------------------------- footer --------------------------------- */
 .bs-foot {

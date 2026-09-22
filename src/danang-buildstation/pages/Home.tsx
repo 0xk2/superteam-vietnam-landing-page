@@ -3,7 +3,7 @@ import titleLockup from '../assets/title-lockup.webp'
 import partners from '../assets/partners.webp'
 import { PAGES } from '../config'
 import { DAYS, EVENT, MENTORS, PREP, PROGRAM, PROMPT } from '../data'
-import Layout, { Actions, Row } from '../components/Layout'
+import Layout, { Row } from '../components/Layout'
 
 export default function Home() {
   return (
@@ -138,7 +138,11 @@ export default function Home() {
           </ul>
           <p className="bs-sheet__small">
             Light dinner on Friday, lunch and tea on Saturday, water and coffee all weekend. We&apos;ll
-            share arrival details in the chat.
+            share arrival details in{' '}
+            <a href={EVENT.chatUrl} target="_blank" rel="noreferrer">
+              the chat
+            </a>
+            .
           </p>
         </Row>
 
@@ -157,7 +161,6 @@ export default function Home() {
 
         <div className="bs-close">
           <p>{EVENT.closing}</p>
-          <Actions />
         </div>
       </div>
     </Layout>

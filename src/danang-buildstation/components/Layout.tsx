@@ -12,23 +12,6 @@ const NAV: [Page, string][] = [
   ['contact', 'Contact'],
 ]
 
-export function Actions({ small = false }: { small?: boolean }) {
-  const size = small ? ' bs-button--small' : ''
-  return (
-    <div className="bs-actions">
-      <JoinColosseum className={`bs-button${size}`} />
-      <a
-        className={`bs-button bs-button--outline${size}`}
-        href={EVENT.chatUrl}
-        target="_blank"
-        rel="noreferrer"
-      >
-        Join the chat
-      </a>
-    </div>
-  )
-}
-
 function JoinColosseum({ className }: { className: string }) {
   return (
     <a className={className} href={EVENT.colosseumUrl} target="_blank" rel="noreferrer">
