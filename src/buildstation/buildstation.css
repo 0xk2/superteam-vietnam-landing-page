@@ -1,0 +1,1157 @@
+/* Colosseum #BUILDSTATION Da Nang.
+   The top of the page is the Road to Colosseum key visual; everything below it
+   reads like the printed programme that goes with the poster. Geist stands in
+   for the KV's ABC Diatype. */
+
+:root {
+  --bs-paper: #ffffff;
+  --bs-ink: #0b0b0b;
+  --bs-muted: #62656c;
+  --bs-rule: #d9d9d6;
+  --bs-red: #a11703;
+
+  --bs-sans: 'Geist', 'Helvetica Neue', Arial, sans-serif;
+  --bs-mono: 'Geist Mono', ui-monospace, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bs-paper);
+  color: var(--bs-ink);
+  font-family: var(--bs-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+dl,
+dd {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
+::selection {
+  background: var(--bs-red);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--bs-red);
+  outline-offset: 2px;
+}
+
+.bs-muted {
+  color: var(--bs-muted);
+}
+
+.bs-red {
+  color: var(--bs-red);
+}
+
+/* ---------------------------------- button --------------------------------- */
+.bs-button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  border-radius: 2px;
+  background: var(--bs-ink);
+  padding: 0 22px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.bs-button:hover {
+  background: var(--bs-red);
+}
+
+.bs-button--outline {
+  border: 1px solid var(--bs-ink);
+  background: transparent;
+  color: var(--bs-ink);
+}
+
+.bs-button--outline:hover {
+  border-color: var(--bs-red);
+  background: transparent;
+  color: var(--bs-red);
+}
+
+.bs-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bs-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.bs-button:disabled:hover {
+  background: var(--bs-ink);
+}
+
+.bs-button--outline:disabled:hover {
+  border-color: var(--bs-ink);
+  background: transparent;
+  color: var(--bs-ink);
+}
+
+button.bs-button {
+  border: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button.bs-button--outline {
+  border: 1px solid var(--bs-ink);
+}
+
+.bs-button--small {
+  min-height: 36px;
+  padding: 0 14px;
+  font-size: 14px;
+}
+
+/* ----------------------------------- bar ----------------------------------- */
+.bs-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--bs-rule);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+}
+
+.bs-bar__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px clamp(16px, 4vw, 40px) 4px;
+}
+
+.bs-bar__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.bs-bar__row,
+.bs-nav {
+  flex: 1 1 100%;
+}
+
+.bs-nav {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 2px clamp(16px, 4vw, 40px) 8px;
+  font-size: 14px;
+}
+
+.bs-nav a {
+  color: var(--bs-muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.bs-nav a:hover,
+.bs-nav a[aria-current='page'] {
+  color: var(--bs-ink);
+}
+
+.bs-nav a[aria-current='page'] {
+  text-decoration: underline;
+  text-decoration-color: var(--bs-red);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.bs-bar__back {
+  color: var(--bs-muted);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.bs-bar__back:hover {
+  color: var(--bs-ink);
+}
+
+@media (max-width: 479px) {
+  .bs-bar__back-label {
+    display: none;
+  }
+
+  .bs-bar .bs-button--small {
+    min-height: 32px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+}
+
+/* ---------------------------------- poster --------------------------------- */
+/* Halftone dots only on the poster, as on the printed key visual. */
+.bs-poster {
+  position: relative;
+  overflow: hidden;
+  background-image: radial-gradient(circle, rgba(190, 190, 190, 0.75) 0.9px, transparent 1.2px);
+  background-size: 14px 14px;
+}
+
+.bs-poster__type {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: clamp(20px, 3vw, 36px) 20px 0;
+  text-align: center;
+}
+
+.bs-poster__partners {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* The KV lockup. Sizes are fractions of the lockup width (cqw), measured from
+   the PSD, so the subtitle keeps the poster's proportions at any size. */
+.bs-lockup {
+  container-type: inline-size;
+  width: min(100%, 640px);
+  margin: clamp(20px, 3vw, 36px) auto 0;
+}
+
+.bs-poster__title {
+  font-weight: inherit;
+}
+
+.bs-poster__title img {
+  width: 100%;
+}
+
+/* Set where "— SIDE TRACK HACKATHON —" sits on the key visual. */
+.bs-poster__track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4cqw;
+  margin-top: 1.9cqw;
+  font-size: 4.4cqw;
+  font-weight: 200;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.bs-poster__track::before,
+.bs-poster__track::after {
+  content: '';
+  width: 4.4cqw;
+  height: max(1px, 0.33cqw);
+  background: currentColor;
+}
+
+.bs-poster__tag {
+  margin-top: 3.3cqw;
+  font-size: max(11px, 2cqw);
+  font-style: italic;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+/* Always show the whole illustration (the Colosseum and the crane's head sit high
+   in it). It is scaled down to at most 1200px and faded into the paper at the top
+   and sides instead of being cropped. */
+.bs-poster__art {
+  position: relative;
+  width: min(100%, 1200px);
+  margin: calc(min(100vw, 1200px) * -0.08) auto 0;
+}
+
+.bs-poster__art > img {
+  width: 100%;
+  height: auto;
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0%, #000 30%),
+    linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to bottom, transparent 0%, #000 30%),
+    linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.bs-poster__date {
+  position: absolute;
+  right: clamp(16px, 6%, 80px);
+  bottom: clamp(16px, 5%, 56px);
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: clamp(20px, 2.6vw, 36px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* Phones: the art is small, so the date sits under it instead of over the crane. */
+@media (max-width: 767px) {
+  .bs-poster__date {
+    position: static;
+    justify-content: center;
+    padding: 14px 0 24px;
+    font-size: 22px;
+  }
+}
+
+.bs-poster__square {
+  width: 0.5em;
+  height: 0.5em;
+  background: var(--bs-ink);
+}
+
+@media (min-width: 768px) {
+  .bs-poster__art {
+    margin-top: calc(min(100vw, 1200px) * -0.15);
+  }
+}
+
+/* -------------------------------- programme --------------------------------- */
+/* Below the poster the page reads like a printed programme: one row per section,
+   the section name in the margin on wide screens and above the content on phones. */
+.bs-sheet {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(40px, 7vw, 80px) 20px clamp(48px, 8vw, 96px);
+}
+
+.bs-row {
+  border-top: 1px solid var(--bs-ink);
+  padding: 16px 0 clamp(40px, 6vw, 64px);
+}
+
+.bs-row__title {
+  margin-bottom: 18px;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bs-row__body {
+  max-width: 720px;
+}
+
+@media (min-width: 1024px) {
+  .bs-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 40px;
+    padding-top: 20px;
+  }
+
+  .bs-row__title {
+    margin: 0;
+  }
+}
+
+/* Headings that sit on their own (contact page). */
+.bs-heading {
+  margin-top: 56px;
+  border-bottom: 1px solid var(--bs-ink);
+  padding-bottom: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bs-sheet__lead {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+.bs-sheet__quote {
+  font-size: clamp(18px, 2.2vw, 22px);
+  letter-spacing: -0.015em;
+  line-height: 1.45;
+}
+
+.bs-sheet__text {
+  margin-top: 12px;
+  color: var(--bs-muted);
+  font-size: clamp(16px, 1.6vw, 17px);
+}
+
+.bs-sheet__small {
+  margin-top: 16px;
+  color: var(--bs-muted);
+  font-size: 14px;
+}
+
+.bs-sheet__more {
+  margin-top: 16px;
+  font-size: 15px;
+}
+
+.bs-sheet__more a {
+  color: var(--bs-red);
+}
+
+/* ---------------------------------- facts ---------------------------------- */
+.bs-facts {
+  margin-top: 28px;
+  border-top: 1px solid var(--bs-rule);
+}
+
+.bs-facts > div {
+  display: grid;
+  gap: 2px;
+  border-bottom: 1px solid var(--bs-rule);
+  padding: 12px 0;
+}
+
+.bs-facts dt {
+  color: var(--bs-muted);
+  font-size: 14px;
+}
+
+.bs-facts__line {
+  display: block;
+}
+
+.bs-facts__line + .bs-facts__line {
+  margin-top: 4px;
+}
+
+.bs-facts strong {
+  font-weight: 600;
+}
+
+@media (min-width: 640px) {
+  .bs-facts > div {
+    grid-template-columns: 110px 1fr;
+    gap: 20px;
+  }
+}
+
+/* ----------------------------------- lists ---------------------------------- */
+.bs-bring {
+  margin-top: 16px;
+}
+
+.bs-bring li {
+  position: relative;
+  padding: 4px 0 4px 20px;
+}
+
+.bs-bring li::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  background: var(--bs-ink);
+}
+
+@media (min-width: 640px) {
+  .bs-bring--pairs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+  }
+}
+
+.bs-steps {
+  display: grid;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.bs-steps li {
+  border-top: 1px solid var(--bs-rule);
+  padding: 14px 0 18px;
+  counter-increment: step;
+}
+
+.bs-steps li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.bs-steps h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.bs-steps h3::before {
+  content: '0' counter(step);
+  margin-right: 12px;
+  color: var(--bs-red);
+  font-family: var(--bs-mono);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.bs-steps p {
+  margin-top: 4px;
+  color: var(--bs-muted);
+  font-size: 15px;
+}
+
+/* --------------------------------- schedule --------------------------------- */
+.bs-days {
+  display: grid;
+  gap: 32px;
+}
+
+.bs-day__head {
+  display: grid;
+  gap: 2px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.bs-day__when {
+  color: var(--bs-red);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.bs-day__list {
+  margin-top: 10px;
+}
+
+.bs-day__list li {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 10px;
+  border-top: 1px solid var(--bs-rule);
+  padding: 7px 0;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.bs-day__time {
+  color: var(--bs-muted);
+  font-family: var(--bs-mono);
+  font-size: 13px;
+  line-height: 22px;
+}
+
+/* Wide screens: the three steps and the three days sit side by side, using the
+   full programme width rather than the text column. */
+@media (min-width: 1024px) {
+  .bs-row__body:has(> .bs-steps),
+  .bs-row__body:has(> .bs-days) {
+    max-width: none;
+  }
+
+  .bs-steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .bs-steps li,
+  .bs-steps li:first-child {
+    border-top: 0;
+    padding: 0;
+  }
+
+  .bs-days {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .bs-day__head {
+    min-height: 72px;
+    align-content: start;
+  }
+}
+
+/* ---------------------------------- close ---------------------------------- */
+.bs-close {
+  border-top: 1px solid var(--bs-ink);
+  padding-top: 28px;
+}
+
+.bs-close p {
+  max-width: 720px;
+  margin-bottom: 20px;
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+@media (min-width: 1024px) {
+  .bs-close {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .bs-close p {
+    margin: 0;
+  }
+}
+
+/* ---------------------------------- footer --------------------------------- */
+.bs-foot {
+  border-top: 1px solid var(--bs-rule);
+  padding: 28px 20px 36px;
+  color: var(--bs-muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+.bs-foot img {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto 14px;
+}
+
+.bs-mono {
+  font-family: var(--bs-mono);
+}
+
+.bs-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* -------------------------------- inner pages ------------------------------- */
+.bs-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(40px, 7vw, 72px) 20px clamp(56px, 8vw, 96px);
+}
+
+.bs-page .bs-row:first-of-type {
+  margin-top: 8px;
+}
+
+.bs-pagehead {
+  max-width: 720px;
+  margin-bottom: 40px;
+}
+
+.bs-pagehead__kicker {
+  color: var(--bs-red);
+  font-size: 15px;
+}
+
+.bs-pagehead__title {
+  margin-top: 8px;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.bs-pagehead__text {
+  max-width: 640px;
+  margin-top: 14px;
+  color: var(--bs-muted);
+  font-size: 17px;
+}
+
+.bs-heading--first {
+  margin-top: 0;
+}
+
+.bs-facts--plain {
+  margin-top: 0;
+  border-top: 0;
+}
+
+.bs-state {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  border-top: 1px solid var(--bs-rule);
+  padding: 32px 0;
+}
+
+.bs-state__title {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* --------------------------------- projects --------------------------------- */
+.bs-projects {
+  display: grid;
+  gap: 0 40px;
+}
+
+@media (min-width: 768px) {
+  .bs-projects {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.bs-project {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--bs-ink);
+  padding: 20px 0 32px;
+}
+
+.bs-project__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--bs-muted);
+  font-size: 14px;
+}
+
+.bs-project__name {
+  margin-top: 12px;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.bs-project__for {
+  margin-top: 4px;
+  color: var(--bs-red);
+  font-size: 15px;
+}
+
+.bs-project__text {
+  display: -webkit-box;
+  margin-top: 14px;
+  overflow: hidden;
+  color: var(--bs-muted);
+  font-size: 15px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.bs-project__iteration {
+  margin-top: 14px;
+  border-left: 1px solid var(--bs-ink);
+  padding-left: 14px;
+  font-size: 15px;
+}
+
+.bs-project__iteration span {
+  display: block;
+  color: var(--bs-muted);
+  font-size: 13px;
+}
+
+.bs-project__links {
+  display: flex;
+  gap: 20px;
+  margin-top: auto;
+  padding-top: 18px;
+  font-size: 15px;
+}
+
+.bs-project__links a {
+  color: var(--bs-red);
+}
+
+/* ----------------------------------- deck ----------------------------------- */
+.bs-deck {
+  display: flex;
+  min-height: calc(100vh - 88px);
+  max-width: 1100px;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+.bs-deck__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 12px;
+  color: var(--bs-muted);
+  font-size: 14px;
+}
+
+.bs-deck__progress {
+  height: 2px;
+  background: var(--bs-rule);
+}
+
+.bs-deck__progress span {
+  display: block;
+  height: 100%;
+  background: var(--bs-red);
+  transform-origin: left;
+  transition: transform 300ms ease-in-out;
+}
+
+.bs-deck__slide {
+  display: grid;
+  flex: 1;
+  align-content: center;
+  gap: 40px;
+  padding: 40px 0;
+}
+
+@media (min-width: 1024px) {
+  .bs-deck__slide {
+    grid-template-columns: 1.3fr 0.7fr;
+    align-items: center;
+    gap: 64px;
+  }
+}
+
+.bs-deck__title {
+  max-width: 760px;
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+
+.bs-deck__title span {
+  display: block;
+}
+
+.bs-deck__lede {
+  max-width: 640px;
+  margin-top: 20px;
+  color: var(--bs-muted);
+  font-size: 18px;
+}
+
+.bs-deck__points {
+  max-width: 640px;
+  margin-top: 24px;
+  padding: 0;
+  list-style: none;
+  counter-reset: point;
+}
+
+.bs-deck__points li {
+  position: relative;
+  border-top: 1px solid var(--bs-rule);
+  padding: 12px 0 12px 36px;
+  counter-increment: point;
+  animation: bs-in 200ms ease-out;
+}
+
+.bs-deck__points li::before {
+  content: '0' counter(point);
+  position: absolute;
+  top: 14px;
+  left: 0;
+  color: var(--bs-red);
+  font-family: var(--bs-mono);
+  font-size: 13px;
+}
+
+.bs-deck__model {
+  border-top: 1px solid var(--bs-ink);
+  padding-top: 16px;
+}
+
+.bs-deck__controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--bs-rule);
+  padding-top: 16px;
+}
+
+.bs-deck__controls button:last-child {
+  margin-left: auto;
+}
+
+.bs-deck__hint {
+  display: none;
+  color: var(--bs-muted);
+  font-size: 13px;
+}
+
+@media (min-width: 640px) {
+  .bs-deck__hint {
+    display: inline;
+  }
+}
+
+@keyframes bs-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bs-deck__points li {
+    animation: none;
+  }
+
+  .bs-deck__progress span {
+    transition: none;
+  }
+}
+
+.bs-model__label {
+  margin-bottom: 16px;
+  color: var(--bs-muted);
+  font-size: 13px;
+}
+
+.bs-model__big {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.bs-model-columns {
+  display: grid;
+  gap: 24px;
+}
+
+.bs-model-columns > div {
+  border-left: 2px solid var(--bs-red);
+  padding-left: 14px;
+}
+
+.bs-model-columns > div + div {
+  border-left-color: var(--bs-ink);
+}
+
+.bs-model-columns .bs-model__label {
+  margin-bottom: 6px;
+}
+
+.bs-model-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  border: 1px solid var(--bs-rule);
+  background: var(--bs-rule);
+}
+
+.bs-model-grid li {
+  min-height: 72px;
+  background: #fff;
+  padding: 14px;
+  font-size: 15px;
+}
+
+.bs-model-list {
+  padding: 0;
+  list-style: none;
+}
+
+.bs-model-list li {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  border-top: 1px solid var(--bs-rule);
+  padding: 10px 0;
+  font-size: 16px;
+}
+
+.bs-model-list span {
+  color: var(--bs-red);
+  font-family: var(--bs-mono);
+  font-size: 13px;
+  line-height: 26px;
+}
+
+/* ----------------------------------- forms ---------------------------------- */
+.bs-form {
+  display: grid;
+  gap: 20px;
+}
+
+.bs-form fieldset {
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--bs-ink);
+  padding: 16px 0 24px;
+}
+
+/* Floated so it lays out like a normal block (and like a row title on wide screens). */
+.bs-form legend {
+  float: left;
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bs-form__fields {
+  display: grid;
+  clear: both;
+  gap: 20px;
+  max-width: 720px;
+}
+
+@media (min-width: 1024px) {
+  .bs-form fieldset {
+    padding-top: 20px;
+  }
+
+  .bs-form legend {
+    width: 220px;
+    margin: 0;
+  }
+
+  .bs-form__fields {
+    clear: none;
+    margin-left: 260px;
+  }
+
+  .bs-form:has(> fieldset) > .bs-button {
+    margin-left: 260px;
+  }
+}
+
+.bs-form__pair {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .bs-form__pair {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.bs-form__error {
+  border-left: 2px solid var(--bs-red);
+  padding: 8px 14px;
+  color: var(--bs-red);
+  font-size: 15px;
+}
+
+.bs-field {
+  display: grid;
+  gap: 6px;
+}
+
+.bs-field label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.bs-field input,
+.bs-field textarea {
+  width: 100%;
+  border: 1px solid #bdbdb9;
+  border-radius: 2px;
+  background: #fff;
+  padding: 10px 12px;
+  color: var(--bs-ink);
+  font: inherit;
+  font-size: 15px;
+}
+
+.bs-field textarea {
+  resize: vertical;
+}
+
+.bs-field input:focus,
+.bs-field textarea:focus {
+  border-color: var(--bs-ink);
+  outline: none;
+}
+
+.bs-field__hint {
+  color: var(--bs-muted);
+  font-size: 13px;
+}
+
+.bs-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.bs-check input {
+  width: 16px;
+  height: 16px;
+  margin-top: 4px;
+  accent-color: var(--bs-red);
+}
+
+.bs-check .bs-field__hint {
+  display: block;
+}
+
+.bs-form > .bs-button {
+  justify-self: start;
+}
+
+@media (min-width: 900px) {
+  .bs-bar__inner {
+    flex-wrap: nowrap;
+    padding: 8px clamp(16px, 4vw, 40px);
+  }
+
+  .bs-bar__row {
+    display: contents;
+  }
+
+  .bs-bar__back {
+    order: 1;
+    margin-right: 28px;
+  }
+
+  .bs-nav {
+    flex: none;
+    order: 2;
+    padding: 0;
+  }
+
+  .bs-bar .bs-actions {
+    order: 3;
+    margin-left: auto;
+  }
+}
