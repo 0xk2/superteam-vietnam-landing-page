@@ -141,43 +141,41 @@ button.bs-button--outline {
 }
 
 /* ----------------------------------- bar ----------------------------------- */
+/* One row everywhere: back link, section nav and, on wide screens, Join Colosseum. */
 .bs-bar {
   position: sticky;
   top: 0;
   z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 20px;
   border-bottom: 1px solid var(--bs-rule);
+  padding: 0 clamp(16px, 4vw, 40px);
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(8px);
 }
 
-.bs-bar__row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 10px clamp(16px, 4vw, 40px) 4px;
+.bs-bar__back {
+  flex-shrink: 0;
+  color: var(--bs-muted);
+  font-size: 14px;
+  text-decoration: none;
 }
 
-.bs-bar__inner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.bs-bar__row,
-.bs-nav {
-  flex: 1 1 100%;
+.bs-bar__back:hover {
+  color: var(--bs-ink);
 }
 
 .bs-nav {
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  padding: 2px clamp(16px, 4vw, 40px) 8px;
   font-size: 14px;
+  scrollbar-width: none;
 }
 
 .bs-nav a {
+  padding: 16px 0 14px;
   color: var(--bs-muted);
   text-decoration: none;
   white-space: nowrap;
@@ -195,25 +193,51 @@ button.bs-button--outline {
   text-underline-offset: 6px;
 }
 
-.bs-bar__back {
-  color: var(--bs-muted);
-  font-size: 14px;
-  text-decoration: none;
+.bs-bar__cta {
+  display: none;
+  margin-left: auto;
 }
 
-.bs-bar__back:hover {
-  color: var(--bs-ink);
+/* The bottom dock carries Join Colosseum on phones. */
+.bs-dock {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  border-top: 1px solid var(--bs-rule);
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
 }
 
-@media (max-width: 479px) {
+.bs-dock__button {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 767px) {
   .bs-bar__back-label {
     display: none;
   }
 
-  .bs-bar .bs-button--small {
-    min-height: 32px;
-    padding: 0 12px;
-    font-size: 13px;
+  /* Room for the dock so it never covers the footer. */
+  body .bs-foot {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (min-width: 768px) {
+  .bs-bar {
+    gap: 28px;
+  }
+
+  .bs-bar__cta {
+    display: inline-flex;
+  }
+
+  .bs-dock {
+    display: none;
   }
 }
 
@@ -1067,29 +1091,3 @@ button.bs-button--outline {
   margin-bottom: 24px;
 }
 
-@media (min-width: 900px) {
-  .bs-bar__inner {
-    flex-wrap: nowrap;
-    padding: 8px clamp(16px, 4vw, 40px);
-  }
-
-  .bs-bar__row {
-    display: contents;
-  }
-
-  .bs-bar__back {
-    order: 1;
-    margin-right: 28px;
-  }
-
-  .bs-nav {
-    flex: none;
-    order: 2;
-    padding: 0;
-  }
-
-  .bs-bar .bs-actions {
-    order: 3;
-    margin-left: auto;
-  }
-}

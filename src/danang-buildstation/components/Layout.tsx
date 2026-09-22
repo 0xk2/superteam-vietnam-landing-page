@@ -16,9 +16,7 @@ export function Actions({ small = false }: { small?: boolean }) {
   const size = small ? ' bs-button--small' : ''
   return (
     <div className="bs-actions">
-      <a className={`bs-button${size}`} href={EVENT.colosseumUrl} target="_blank" rel="noreferrer">
-        Join Colosseum
-      </a>
+      <JoinColosseum className={`bs-button${size}`} />
       <a
         className={`bs-button bs-button--outline${size}`}
         href={EVENT.chatUrl}
@@ -31,25 +29,29 @@ export function Actions({ small = false }: { small?: boolean }) {
   )
 }
 
+function JoinColosseum({ className }: { className: string }) {
+  return (
+    <a className={className} href={EVENT.colosseumUrl} target="_blank" rel="noreferrer">
+      Join Colosseum
+    </a>
+  )
+}
+
 export default function Layout({ current, children }: { current: Page; children: ReactNode }) {
   return (
     <>
       <header className="bs-bar">
-        <div className="bs-bar__inner">
-          <div className="bs-bar__row">
-            <a className="bs-bar__back" href="/" aria-label="Back to vn.superteam.fun">
-              ← <span className="bs-bar__back-label">vn.superteam.fun</span>
+        <a className="bs-bar__back" href="/" aria-label="Back to vn.superteam.fun">
+          ← <span className="bs-bar__back-label">vn.superteam.fun</span>
+        </a>
+        <nav className="bs-nav" aria-label="Build Station">
+          {NAV.map(([page, label]) => (
+            <a key={page} href={PAGES[page]} aria-current={page === current ? 'page' : undefined}>
+              {label}
             </a>
-            <Actions small />
-          </div>
-          <nav className="bs-nav" aria-label="Build Station">
-            {NAV.map(([page, label]) => (
-              <a key={page} href={PAGES[page]} aria-current={page === current ? 'page' : undefined}>
-                {label}
-              </a>
-            ))}
-          </nav>
-        </div>
+          ))}
+        </nav>
+        <JoinColosseum className="bs-button bs-button--small bs-bar__cta" />
       </header>
 
       <main>{children}</main>
@@ -61,6 +63,11 @@ export default function Layout({ current, children }: { current: Page; children:
           <a href="mailto:vietnam@superteam.fun">vietnam@superteam.fun</a>
         </p>
       </footer>
+
+      {/* Phones: the main call to action lives at the bottom of the screen, not in the header. */}
+      <div className="bs-dock">
+        <JoinColosseum className="bs-button bs-dock__button" />
+      </div>
     </>
   )
 }
