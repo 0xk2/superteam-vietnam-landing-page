@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico?v=2" sizes="any" />
+    <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+    <meta name="theme-color" content="#08040f" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Program reports from Superteam Vietnam: hackathons, build stations and community initiatives, with plan versus actual numbers." />
+    <title>Reports · Superteam Vietnam</title>
+    <link rel="canonical" href="https://vn.superteam.fun/report/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Superteam Vietnam" />
+    <meta property="og:title" content="Reports · Superteam Vietnam" />
+    <meta property="og:description" content="Program reports from Superteam Vietnam: hackathons, build stations and community initiatives." />
+    <meta property="og:url" content="https://vn.superteam.fun/report/" />
+    <meta property="og:image" content="https://vn.superteam.fun/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Fraunces:opsz,wght@9..144,700&family=Lexend:wght@400&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #08040f;
+        --text: #ffffff;
+        --subtle: rgba(255, 255, 255, 0.8);
+        --muted: rgba(255, 255, 255, 0.5);
+        --line: rgba(255, 255, 255, 0.15);
+        --card: rgba(255, 255, 255, 0.05);
+        --card-hover: rgba(255, 255, 255, 0.1);
+        --purple: #895ae2;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 400 16px/1.6 'Poppins', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: inherit; }
+      .wrap { max-width: 880px; margin: 0 auto; padding: 0 clamp(16px, 5vw, 40px); }
+      header { padding: 28px 0; border-bottom: 1px solid var(--line); }
+      header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+      .home { font-family: 'Lexend', sans-serif; font-size: 14px; color: var(--subtle); text-decoration: none; }
+      .home:hover { color: var(--text); }
+      .eyebrow { font-family: 'Lexend', sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--purple); margin: 0 0 12px; }
+      h1 { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(36px, 6vw, 56px); line-height: 1.05; margin: 0 0 12px; }
+      main { padding: clamp(40px, 8vw, 80px) 0 80px; }
+      .lede { color: var(--subtle); max-width: 560px; margin: 0 0 40px; }
+      .list { display: grid; gap: 16px; padding: 0; margin: 0; list-style: none; }
+      .card {
+        display: grid; gap: 6px;
+        padding: 24px; border: 1px solid var(--line); border-radius: 16px;
+        background: var(--card); text-decoration: none;
+        transition: background 0.15s, border-color 0.15s;
+      }
+      .card:hover { background: var(--card-hover); border-color: var(--purple); }
+      .card small { font-family: 'Lexend', sans-serif; font-size: 13px; color: var(--muted); }
+      .card b { font-size: 20px; font-weight: 600; line-height: 1.3; }
+      .card span { color: var(--subtle); font-size: 15px; }
+      .card em { font-style: normal; color: var(--purple); font-size: 14px; margin-top: 6px; }
+      footer { border-top: 1px solid var(--line); padding: 24px 0; color: var(--muted); font-size: 14px; }
+    </style>
+  </head>
+  <body>
+    <header><div class="wrap"><a class="home" href="/">← Superteam Vietnam</a></div></header>
+    <main><div class="wrap">
+      <p class="eyebrow">Reports</p>
+      <h1>What we ran, and what it delivered.</h1>
+      <p class="lede">Public reports on Superteam Vietnam programs, with the plan, the actual numbers and what we learned.</p>
+      <ul class="list">
+        <!-- Newest first. To add a report: drop its static site in public/report/<slug>/ and add a card here. -->
+        <li>
+          <a class="card" href="/report/rtc/">
+            <small>12 Sep – 13 Oct 2026 · Hackathon</small>
+            <b>Road to Colosseum: Vietnam Side Track</b>
+            <span>111 registrants, 34 global submissions to Colosseum, 13 sessions and a Demo Day with 16 teams.</span>
+            <em>Read the report →</em>
+          </a>
+        </li>
+      </ul>
+    </div></main>
+    <footer><div class="wrap">© Superteam Vietnam</div></footer>
+  </body>
+</html>
