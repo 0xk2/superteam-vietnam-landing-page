@@ -9,8 +9,15 @@
   status = 302
   force = true
 
-# Road to Colosseum report, a static site copied verbatim from public/report/rtc.
+# Reports used to live under /report/; keep old links working.
+[[redirects]]
+  from = "/report/*"
+  to = "/reports/:splat"
+  status = 301
+  force = true
+
+# Road to Colosseum report, a static site copied verbatim from public/reports/rtc.
 [[headers]]
-  for = "/report/rtc/assets/*"
+  for = "/reports/rtc/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
