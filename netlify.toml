@@ -8,3 +8,9 @@
   to = "https://forms.gle/MaCQbiJqtTDyuDvu8"
   status = 302
   force = true
+
+# Road to Colosseum report, a static site copied verbatim from public/report/rtc.
+[[headers]]
+  for = "/report/rtc/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
