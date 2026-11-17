@@ -9,6 +9,7 @@ export default defineConfig({
       // served under /danang-buildstation/.
       input: {
         main: 'index.html',
+        winterChallenge: 'winter-challenge/index.html',
         danangBuildstation: 'danang-buildstation/index.html',
         danangBuildstationLearn: 'danang-buildstation/learn/index.html',
         danangBuildstationProjects: 'danang-buildstation/projects/index.html',

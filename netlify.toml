@@ -21,3 +21,46 @@
   for = "/reports/rtc/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Build Station: Winter Challenge lives at /winter-challenge/. Send the ways
+# people type or say it ("Winter Challenge", WinterChallenge, /winter) there.
+[[redirects]]
+  from = "/Winter%20Challenge/*"
+  to = "/winter-challenge/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/winter%20challenge/*"
+  to = "/winter-challenge/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Winter-Challenge/*"
+  to = "/winter-challenge/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/WinterChallenge/*"
+  to = "/winter-challenge/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/winterchallenge/*"
+  to = "/winter-challenge/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/winter/*"
+  to = "/winter-challenge/"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/winter-challenge/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
