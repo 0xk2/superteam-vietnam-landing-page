@@ -10,10 +10,11 @@ const REPORT = '/reports/rtc/'
 const A = '/winter-challenge'
 
 const nav = [
+  ['How to get in', 'get-in'],
   ['Program', 'program'],
   ['Timeline', 'timeline'],
   ['Prizes', 'prizes'],
-  ['Mentors', 'mentors'],
+  ['Last program', 'track-record'],
   ['FAQ', 'faq'],
 ] as const
 
@@ -21,12 +22,6 @@ const audiences = [
   ['Solana builders', 'Ship ahead of Colosseum 2027.'],
   ['Students', 'Learn Solana in Vietnamese.'],
   ['Cross-chain devs', 'Move to Solana and deploy fast.'],
-]
-
-const whyVietnam = [
-  ['Top 5', 'Global crypto adoption, 2025'],
-  ['560,000+', 'IT professionals'],
-  ['200,000', 'More tech talent needed in 3 years (estimate)'],
 ]
 
 const weeks = [
@@ -93,34 +88,68 @@ const mentors = [
   ['chau', 'Châu Khắc', 'Superteam Vietnam'],
 ]
 
-const rtcStats = [
+const lastStats = [
   ['111', 'Registrants'],
-  ['34', 'Global submissions'],
+  ['34', 'Global submissions to Colosseum'],
   ['16', 'Demo Day teams'],
-  ['3', 'Colosseum interviews so far'],
+  ['3', 'Teams shortlisted for a Colosseum interview'],
 ]
 
 const partnerOptions = [
-  ['Ecosystem partner', 'Demo Day spot, X announcement, your logo on all materials, optional workshop. You offer perks or credits to teams.'],
-  ['Media partner', 'Official Media Partner across program channels, logo on Demo Day POSM, Demo Day invitation. You help distribute registration.'],
-  ['University partner', 'A Solana workshop on your campus, 12 Vietnamese bootcamp videos, a student track. You host and share with students.'],
+  ['Ecosystem partner', 'You get a Demo Day spot, an X announcement, your logo on marketing materials and the option of a workshop. You offer credits or perks to teams.'],
+  ['Media partner', 'You are named Official Media Partner, with your logo on marketing materials and Demo Day POSM, and a Demo Day invitation. You share registration with your community.'],
+  ['University partner', 'Your students get a campus workshop, 12 bootcamp videos in Vietnamese and a shot at Best University Team. You host the workshop and share registration.'],
 ]
 
-const faqs = [
-  ['Who can join?', 'Students, developers moving from other chains, and Solana builders preparing for Colosseum 2027.'],
-  ['Do I need Solana experience?', 'No. Start with the campus and online workshops, plus 12 bootcamp videos and 4 product videos in Vietnamese.'],
-  ['Can I join online?', 'Yes. The kickoff call, workshops and office hours run online. Build Stations and co-working days happen in person in HCMC and Da Nang.'],
-  ['How are prizes paid?', 'Planned amounts are in USD, paid in USDC. A team can win one track prize and one award.'],
-  ['What happens after Demo Day?', 'Winter Challenge leads into Colosseum 2027. The previous edition, Road to Colosseum, sent 34 projects to Colosseum.'],
+const steps = [
+  ['Fill in the form', 'The registration form is at the bottom of this page.'],
+  ['Join the kickoff call', 'Week 1 starts on December 1 with an online kickoff call.'],
+  ['Pick a track', 'Open Track for any product, or Developer Tooling for tools other builders use.'],
+  ['Come to a Build Station', 'HCMC on Dec 14–20 or Da Nang on Dec 21–27. Can’t travel? Workshops and office hours also run online.'],
 ]
 
-function Head({ n, label, children }: { n: string; label: string; children: React.ReactNode }) {
+const weGive = [
+  'Campus workshops and online sessions',
+  'Build Stations in HCMC and Da Nang, then co-working days',
+  'Office hours through to Demo Day',
+  '12 bootcamp videos and 4 product videos in Vietnamese',
+  'A shot at USD 10,000 in prizes',
+]
+const youGive = ['Come to the sessions', 'Keep building between them', 'Show your project at Demo Day on January 16']
+
+const faqGroups: { group: string; items: string[][] }[] = [
+  {
+    group: 'Getting in',
+    items: [
+      ['Who can join?', 'Students, developers coming from other chains, and developers already building on Solana.'],
+      ['Do I need Solana experience?', 'No. The campus and online workshops start from the basics, and there are 12 bootcamp videos and 4 product videos in Vietnamese.'],
+      ['Can I join online?', 'Yes. The kickoff call, workshops and office hours run online. Build Stations and co-working days happen in person in HCMC and Da Nang.'],
+    ],
+  },
+  {
+    group: 'Prizes',
+    items: [
+      ['How are prizes paid?', 'In USDC. The amounts on this page are planned amounts in USD.'],
+      ['Can a team win more than one prize?', 'A team can win one track prize and one award.'],
+    ],
+  },
+  {
+    group: 'Colosseum',
+    items: [
+      [
+        'What is Colosseum?',
+        'Colosseum runs Solana’s global hackathons. Winter Challenge is a separate program run by Superteam Vietnam, and a chance to get a product ready before Colosseum 2027.',
+      ],
+      ['What was Road to Colosseum?', 'Our previous program, from Sep 12 to Oct 13, 2026. It had 111 registrants, 34 submissions to Colosseum and 16 teams at Demo Day.'],
+    ],
+  },
+]
+
+
+function Head({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <header className="head">
-      <p className="kicker">
-        <span>{n}</span>
-        {label}
-      </p>
+      <p className="kicker">{label}</p>
       <h2>{children}</h2>
     </header>
   )
@@ -184,14 +213,14 @@ function App() {
         <section className="cover wrap" aria-labelledby="title">
           <div className="cover-meta">
             <span>Solana × Superteam Vietnam</span>
-            <span>Dec 1, 2026 — Jan 16, 2027</span>
+            <span>Dec 1, 2026 – Jan 16, 2027</span>
           </div>
           <div className="cover-grid">
             <div className="cover-title">
               <h1 id="title">
                 Build Station: Winter Challenge <em>2026.</em>
               </h1>
-              <p className="cover-lede">A build challenge for Vietnam’s developers on Solana, after Road to Colosseum.</p>
+              <p className="cover-lede">Seven weeks to build on Solana with Superteam Vietnam. Workshops, Build Stations in HCMC and Da Nang, and USD 10,000 in prizes at Demo Day.</p>
             </div>
             <figure className="cover-art">
               <img
@@ -209,8 +238,8 @@ function App() {
               <a className="btn" href="#register">
                 Register now
               </a>
-              <a className="link" href="#timeline">
-                See the timeline ↓
+              <a className="link" href="#get-in">
+                How to get in ↓
               </a>
             </div>
             <dl className="facts">
@@ -227,57 +256,72 @@ function App() {
                 <dd>USD 10,000, paid in USDC</dd>
               </div>
               <div>
-                <dt>Format</dt>
-                <dd>7 weeks · 2 tracks · 2 awards</dd>
+                <dt>Tracks</dt>
+                <dd>Open Track, Developer Tooling</dd>
               </div>
             </dl>
           </div>
         </section>
 
+        {/* HOW TO GET IN */}
+        <section className="section wrap" id="get-in">
+          <Head label="How to get in">Four steps from here to building.</Head>
+          <ol className="steps">
+            {steps.map(([t, d], i) => (
+              <li key={t}>
+                <span className="step-n">{i + 1}</span>
+                <b>{t}</b>
+                <p>{d}</p>
+              </li>
+            ))}
+          </ol>
+          <a className="btn" href="#register">
+            Go to the form
+          </a>
+        </section>
+
         {/* PROGRAM */}
         <section className="section wrap" id="program">
-          <Head n="01" label="The program">
-            Winter Challenge runs for <em>7 weeks</em> in 3 cities and online.
+          <Head label="The program">
+            Seven weeks of workshops, Build Stations and office hours.
           </Head>
+          <div className="deal">
+            <div>
+              <p className="rows-label">What you get</p>
+              <ul className="ticks">
+                {weGive.map(t => (
+                  <li key={t}>{t}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="rows-label">What we ask in return</p>
+              <ul className="ticks">
+                {youGive.map(t => (
+                  <li key={t}>{t}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
           <div className="program">
-            <p className="prose">
-              Learn at campus workshops. Build next to other teams at Build Stations in HCMC and Da Nang. Get unblocked at office hours. Bring what you
-              built to Demo Day on January 16.
-            </p>
-            <ol className="rows">
-              {audiences.map(([t, d], i) => (
+            <div>
+              <p className="rows-label">Who it’s for</p>
+              <ol className="rows">
+              {audiences.map(([t, d]) => (
                 <li key={t}>
-                  <span className="idx">0{i + 1}</span>
                   <b>{t}</b>
                   <span>{d}</span>
                 </li>
               ))}
-            </ol>
-          </div>
-
-          <div className="why">
-            <p className="why-title">Vietnam has the devs but few structured ways to learn Solana.</p>
-            <div className="figures">
-              {whyVietnam.map(([n, l]) => (
-                <div key={l}>
-                  <b>{n}</b>
-                  <span>{l}</span>
-                </div>
-              ))}
+              </ol>
             </div>
-            <p className="source">Sources: Chainalysis via VnEconomy 9/2025, TopDev 2025, Tiger Research 8/2024</p>
           </div>
         </section>
 
-        <figure className="bleed wrap">
-          <img src={`${A}/photos/community.jpg`} width="2000" height="1000" alt="Road to Colosseum builders and the Superteam Vietnam community, group photo" loading="lazy" decoding="async" />
-          <figcaption>Road to Colosseum, the previous edition.</figcaption>
-        </figure>
-
         {/* TIMELINE */}
         <section className="section wrap" id="timeline">
-          <Head n="02" label="Timeline">
-            7 weeks from registration to <em>Demo Day on Jan 16.</em>
+          <Head label="Timeline">
+            Seven weeks, from kickoff to Demo Day on Jan 16.
           </Head>
           <div className="gantt" role="table" aria-label="Winter Challenge timeline by week">
             <div className="g-row g-weeks" role="row">
@@ -340,8 +384,8 @@ function App() {
 
         {/* PRIZES */}
         <section className="section wrap" id="prizes">
-          <Head n="03" label="Prize structure">
-            USD 10,000 across <em>2 tracks and 2 awards.</em>
+          <Head label="Prize structure">
+            USD 10,000, split across two tracks and two awards.
           </Head>
           <div className="prizes">
             <div className="prize-open">
@@ -371,35 +415,39 @@ function App() {
           </div>
         </section>
 
-        {/* MENTORS */}
-        <section className="section wrap" id="mentors">
-          <Head n="04" label="Judges and mentors">
-            Investors and builders mentored <em>Road to Colosseum teams.</em>
+        {/* TRACK RECORD: everything about the previous program lives here */}
+        <section className="section wrap" id="track-record">
+          <Head label="Our last program">
+            Last time, 34 Vietnamese projects made it to Colosseum.
           </Head>
-          <ul className="people">
-            {mentors.map(([id, name, org]) => (
-              <li key={id}>
-                <img src={`${A}/people/${id}.jpg`} alt="" width="400" height="400" loading="lazy" decoding="async" />
-                <b>{name}</b>
-                <span>{org}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
+          <div className="record-intro">
+            <p className="prose">
+              Before Winter Challenge, we ran <b>Road to Colosseum</b> from Sep 12 to Oct 13, 2026. It helped Vietnamese teams submit to Colosseum, Solana’s
+              global hackathon, with 13 sessions, a Buildstation in Da Nang and a Demo Day in Ho Chi Minh City.
+            </p>
+            <a className="link" href={REPORT}>
+              Read the full Road to Colosseum report →
+            </a>
+          </div>
 
-        {/* LAST EDITION */}
-        <section className="section wrap" id="previous">
-          <Head n="05" label="Last hackathon: Road to Colosseum">
-            Road to Colosseum sent <em>34 projects to Colosseum.</em>
-          </Head>
+          <figure className="record-photo">
+            <img src={`${A}/photos/community.jpg`} width="2000" height="1000" alt="Builders and organizers at the Road to Colosseum Demo Day" loading="lazy" decoding="async" />
+            <figcaption>Road to Colosseum Demo Day, Oct 4, 2026, Ho Chi Minh City.</figcaption>
+          </figure>
+
+          <div className="record-label">Road to Colosseum results</div>
           <div className="figures figures-4">
-            {rtcStats.map(([n, l]) => (
+            {lastStats.map(([n, l]) => (
               <div key={l}>
                 <b>{n}</b>
                 <span>{l}</span>
               </div>
             ))}
           </div>
+          <p className="reach-line">
+            <b>185.3K</b> X impressions in 32 days. <b>34</b> placements in Vietnamese media.
+          </p>
+
           <div className="photos">
             <figure className="ph-wide">
               <img src={`${A}/photos/winners.jpg`} width="1600" height="1068" alt="The winning team holding the first-prize board at Demo Day" loading="lazy" decoding="async" />
@@ -414,41 +462,69 @@ function App() {
               <figcaption>Judges scoring</figcaption>
             </figure>
           </div>
-          <div className="reach">
-            <p>
-              <b>185.3K</b> X impressions in 32 days, <b>34</b> press placements in Vietnamese media.
-            </p>
-            <a className="link" href={REPORT}>
-              Read the full Road to Colosseum report →
-            </a>
+
+          <div className="sub" id="mentors">
+            <div className="sub-head">
+              <h3>Mentors and judges from last time</h3>
+              <p>Mentors and judges at Road to Colosseum.</p>
+            </div>
+            <ul className="people">
+              {mentors.map(([id, name, org]) => (
+                <li key={id}>
+                  <img src={`${A}/people/${id}.jpg`} alt="" width="400" height="400" loading="lazy" decoding="async" />
+                  <b>{name}</b>
+                  <span>{org}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="sub">
+            <div className="sub-head">
+              <h3>27 partners backed it</h3>
+              <p>Ecosystem, media and community partners of Road to Colosseum.</p>
+            </div>
+            <div className="logos">
+              <div>
+                <p>
+                  <b>13</b> Ecosystem partners and sponsors
+                </p>
+                <img
+                  src={`${A}/logos/ecosystem.png`}
+                  width="2048"
+                  height="753"
+                  alt="NSSC, DISSC, Solscan, Birdeye, Solami, Fystack, Hashgraph, MonkeDAO, Solflare, PayMoji, Souls Lab, Flux RPC and Themis logos"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div>
+                <p>
+                  <b>14</b> Media and community partners
+                </p>
+                <img
+                  src={`${A}/logos/media.png`}
+                  width="2048"
+                  height="753"
+                  alt="Startup Vietnam Foundation, Swiss EP, Coin68, sqrDAO, APAC DAO, Sotatek, Varmeta, Dev3Pack, TAO Startup, Overseas Vietnamese, GoE Alliance, Activ8, CraftStack and Corelia Academy logos"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* PARTNERS */}
+        {/* PARTNER WITH US */}
         <section className="section wrap" id="partners">
-          <Head n="06" label="Partners">
-            28 partners backed <em>Road to Colosseum.</em>
+          <Head label="Partner with us">
+            Partner with Winter Challenge.
           </Head>
-          <div className="logos">
-            <div>
-              <p>
-                <b>13</b> Ecosystem partners and sponsors
-              </p>
-              <img src={`${A}/logos/ecosystem.png`} width="2048" height="753" alt="NSSC, DISSC, Solscan, Birdeye, Solami, Fystack, Hashgraph, MonkeDAO, Solflare, PayMoji, Souls Lab, Flux RPC, Themis" loading="lazy" decoding="async" />
-            </div>
-            <div>
-              <p>
-                <b>15</b> Media and community partners
-              </p>
-              <img src={`${A}/logos/media.png`} width="2048" height="753" alt="Startup Vietnam Foundation, Swissep, 68 Cam Sixty Eight, SGB DAO, APAC DAO, Sotatek, Varmeta, Dev3pack, TAO Startup, Overseas Vietnamese, GOE Alliance, Activ8, CraftStack, Corelia Academy, DUT Superteam University Club" loading="lazy" decoding="async" />
-            </div>
-          </div>
           <div className="options">
             <div className="options-head">
-              <h3>Partner with Winter Challenge</h3>
               <p>Tell us which partnership fits and we’ll confirm the details.</p>
               <a className="link" href={CONTACT} target="_blank" rel="noopener noreferrer">
-                Daphne, Operations Lead · @dieubui on Telegram →
+                Message Daphne on Telegram →
               </a>
             </div>
             <ol>
@@ -465,18 +541,21 @@ function App() {
 
         {/* FAQ */}
         <section className="section wrap faq" id="faq">
-          <Head n="07" label="FAQ">
-            Good to know.
-          </Head>
+          <Head label="FAQ">What people ask us.</Head>
           <div className="qs">
-            {faqs.map(([q, a]) => (
-              <details key={q}>
-                <summary>
-                  {q}
-                  <span aria-hidden="true" />
-                </summary>
-                <p>{a}</p>
-              </details>
+            {faqGroups.map(g => (
+              <div className="q-group" key={g.group}>
+                <p className="rows-label">{g.group}</p>
+                {g.items.map(([q, a]) => (
+                  <details key={q}>
+                    <summary>
+                      {q}
+                      <span aria-hidden="true" />
+                    </summary>
+                    <p>{a}</p>
+                  </details>
+                ))}
+              </div>
             ))}
           </div>
         </section>
@@ -485,13 +564,10 @@ function App() {
         <section className="register" id="register">
           <div className="wrap register-inner">
             <div className="register-copy">
-              <p className="kicker kicker-light">
-                <span>08</span>Register
-              </p>
+              <p className="kicker kicker-light">Register</p>
               <h2>
-                Build Station: <em>Winter Challenge.</em>
+                Register for Winter Challenge.
               </h2>
-              <p>Seven weeks of building on Solana with Vietnam’s developer community.</p>
               <dl className="reg-facts">
                 <div>
                   <dt>Dates</dt>
